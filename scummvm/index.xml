@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
+    <author>Dylan Servilla</author>
     <title>Dylan Servilla - ScummVM Blog</title>
     <link>https://djsrv.github.io/scummvm/</link>
     <description>Recent content in ScummVM Blog on Dylan Servilla</description>
@@ -12,10 +13,10 @@
     
     
     <item>
+      <author>Dylan Servilla</author>
       <title>Hello, ScummVM!</title>
       <link>https://djsrv.github.io/scummvm/hello-scummvm/</link>
       <pubDate>Tue, 12 May 2020 00:12:43 -0400</pubDate>
-      
       <guid>https://djsrv.github.io/scummvm/hello-scummvm/</guid>
       <description>Hi! I&amp;rsquo;m Dylan Servilla, and this summer I&amp;rsquo;m going to be working on ScummVM&amp;rsquo;s Macromedia Director engine as a GSoC student. Director was used to create a ton of multimedia from the late &amp;rsquo;80s to early &amp;rsquo;00s, and I think it&amp;rsquo;s important that we save this digital history from software rot. In particular, I hope to help the engine reach full support for Spaceship Warlock and The Journeyman Project in the near future.</description>
     </item>
