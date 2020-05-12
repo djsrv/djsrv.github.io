@@ -2,12 +2,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Dylan Servilla - Categories</title>
-    <link>https://servilla.org/categories/</link>
+    <link>https://djsrv.github.io/categories/</link>
     <description>Recent content in Categories on Dylan Servilla</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
-	<atom:link href="https://servilla.org/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://djsrv.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
   </channel>
