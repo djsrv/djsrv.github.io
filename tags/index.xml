@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <author>Dylan Servilla</author>
     <title>Dylan Servilla - Tags</title>
     <link>https://djsrv.github.io/tags/</link>
     <description>Recent content in Tags on Dylan Servilla</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <managingEditor>dservilla@gmail.com (Dylan Servilla)</managingEditor>
+    <webMaster>dservilla@gmail.com (Dylan Servilla)</webMaster>
     
 	<atom:link href="https://djsrv.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     

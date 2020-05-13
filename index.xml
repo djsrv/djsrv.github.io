@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <author>Dylan Servilla</author>
     <title>Dylan Servilla</title>
     <link>https://djsrv.github.io/</link>
     <description>Recent content on Dylan Servilla</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <managingEditor>dservilla@gmail.com (Dylan Servilla)</managingEditor>
+    <webMaster>dservilla@gmail.com (Dylan Servilla)</webMaster>
     <lastBuildDate>Tue, 12 May 2020 01:04:56 -0400</lastBuildDate>
     
 	<atom:link href="https://djsrv.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <author>Dylan Servilla</author>
+      <author>dservilla@gmail.com (Dylan Servilla)</author>
       <title>Hello, ScummVM!</title>
       <link>https://djsrv.github.io/scummvm/hello-scummvm/</link>
       <pubDate>Tue, 12 May 2020 00:12:43 -0400</pubDate>
