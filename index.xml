@@ -8,10 +8,33 @@
     <language>en-us</language>
     <managingEditor>dservilla@gmail.com (Dylan Servilla)</managingEditor>
     <webMaster>dservilla@gmail.com (Dylan Servilla)</webMaster>
-    <lastBuildDate>Tue, 12 May 2020 01:04:56 -0400</lastBuildDate>
+    <lastBuildDate>Wed, 20 May 2020 18:12:16 -0400</lastBuildDate>
     
 	<atom:link href="https://djsrv.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>A Week of Preparation</title>
+      <link>https://djsrv.github.io/scummvm/a-week-of-preparation/</link>
+      <pubDate>Wed, 20 May 2020 18:12:16 -0400</pubDate>
+      <author>dservilla@gmail.com (Dylan Servilla)</author>
+      <guid>https://djsrv.github.io/scummvm/a-week-of-preparation/</guid>
+      <description>&lt;p&gt;School&amp;rsquo;s out, Summer of Code prep has begun! This past week:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;I&amp;rsquo;ve been reading and re-reading the code for ScummVM&amp;rsquo;s &lt;a href=&#34;https://github.com/scummvm/scummvm/tree/master/engines/director/lingo&#34;&gt;Lingo subsystem&lt;/a&gt; to improve my mental map of it, and I&amp;rsquo;ve been making &lt;a href=&#34;https://github.com/scummvm/scummvm/commits?author=djsrv&#34;&gt;small fixes&lt;/a&gt; when I catch problems.&lt;/li&gt;
+&lt;li&gt;I collected some of the &lt;a href=&#34;https://wiki.scummvm.org/index.php/Director#File_Format&#34;&gt;documentation&lt;/a&gt; I encountered in my past adventures with Director. A ton of interesting information on Director&amp;rsquo;s file format in there!&lt;/li&gt;
+&lt;li&gt;I set up a shelf next to my desk and turned it into my obsolete Macromedia products library (mostly Director books, of course).
+&lt;img src=&#34;https://djsrv.github.io/img/macromedia-library.jpg&#34; alt=&#34;Shelf of Macromedia Director books&#34;&gt;&lt;/li&gt;
+&lt;li&gt;I&amp;rsquo;ve been reading up on Lingo&amp;rsquo;s factories and parent scripts, two different object systems and the eventual basis for Director&amp;rsquo;s XObjects and Xtras.&lt;/li&gt;
+&lt;li&gt;I did some &lt;a href=&#34;https://docs.google.com/document/d/1bsq80TFdz38Ib2W0O8YfAazNe2SrPEgWIKheb5GV1KI/edit&#34;&gt;planning&lt;/a&gt; for the implementation of these object systems.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Tomorrow sev and I are going to meet with &lt;a href=&#34;https://en.wikipedia.org/wiki/John_Thompson_(inventor)&#34;&gt;John Henry Thomspon&lt;/a&gt;, the inventor of Lingo, to discuss the implementation of factories! I grew up playing Shockwave (for Director) games, and I&amp;rsquo;ve spent a good deal of time hacking with their Lingo bytecode, so I&amp;rsquo;m looking forward to meeting the man himself.&lt;/p&gt;
+&lt;p&gt;I should probably elaborate on my history with Director. I&amp;rsquo;m currently 19, so I only caught the tail end of Shockwave gaming, and I mostly played Flash games. I got interested in how web games worked in 2013-2014, and there were some fantastic, user-friendly tools for peering into the inner workings of Flash &lt;code&gt;.swf&lt;/code&gt; files, such as &lt;a href=&#34;https://github.com/jindrapetrik/jpexs-decompiler&#34;&gt;JPEXS Free Flash Decompiler (FFDEC)&lt;/a&gt;. However, every so often I&amp;rsquo;d encounter a Director &lt;code&gt;.dcr&lt;/code&gt; file, and there were no good tools for these. I wasn&amp;rsquo;t capable enough to do the necessary reverse engineering myself, so for the next few years, I gave up on Director.&lt;/p&gt;
+&lt;p&gt;In 2017, I came across a &lt;a href=&#34;https://www.youtube.com/watch?v=kNQ2XwRcbmM&#34;&gt;YouTube video&lt;/a&gt; about a lost Director game that some people were interested in finding, &amp;ldquo;Jimmy Neutron: Gotta Blast! Rocket Race&amp;rdquo;. I decided to look for the game, and I found a subdomain of nick.com that mirrored the website as it was sometime in the mid 2000s. Within a couple minutes, I found the landing page for the game on that subdomain. However, the page required you to log in with a Nick ID to get to the game, and the signup page no longer worked. I thought I&amp;rsquo;d hit a dead end, but then I remembered I&amp;rsquo;d already signed up for a Nick ID about 10 years before, in my early days on the web. I began guessing combinations of old usernames and passwords until I got to the game, I posted it on the 3D Groove Grove Discord server, and now my crowning achievement is having my Discord alias &amp;lsquo;kaj&amp;rsquo; listed as the game&amp;rsquo;s discoverer on its &lt;a href=&#34;https://lostmediawiki.com/Jimmy_Neutron:_Gotta_Blast!_Rocket_Race_(partially_found_online_game;_2002)&#34;&gt;Lost Media Wiki article&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Soon after I posted the game files, the 3D Groove Grove users discovered that the game was incomplete, missing most of the levels that were advertised in commercials. I wanted to poke around the game to see what was up, but at that point the tools for working with Director files were still extremely limited. With some searching, I found a primitive Lingo disassembler called &lt;a href=&#34;https://github.com/Brian151/OpenShockwave/tree/master/tools/lscrtoscript&#34;&gt;ProjectorRays&lt;/a&gt; that tomysshadow, the admin of the 3D Groove Grove server, had been working on. I asked him about it, and he invited me to the OpenShockwave Discord server, where people were reverse engineering Director with eventual plans to build an open-source replacement for the Shockwave player. I picked up work on ProjectorRays, and I took it from a half-working Lingo disassembler to a mostly-working decompiler. Soon OpenShockwave became the Earthquake Project, and progress on Lingo decompilation continued with &lt;a href=&#34;https://github.com/Earthquake-Project/Shockky/&#34;&gt;Shockky&lt;/a&gt;, but everything else stalled.&lt;/p&gt;
+&lt;p&gt;Three years later, I still wanted to work on an open-source Director reimplementation, so here I am now at ScummVM. :)&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Hello, ScummVM!</title>
