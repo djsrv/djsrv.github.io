@@ -8,10 +8,22 @@
     <language>en-us</language>
     <managingEditor>dservilla@gmail.com (Dylan Servilla)</managingEditor>
     <webMaster>dservilla@gmail.com (Dylan Servilla)</webMaster>
-    <lastBuildDate>Wed, 20 May 2020 18:12:16 -0400</lastBuildDate>
+    <lastBuildDate>Mon, 01 Jun 2020 23:59:24 -0400</lastBuildDate>
     
 	<atom:link href="https://djsrv.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>First Day of Coding</title>
+      <link>https://djsrv.github.io/scummvm/first-day-of-coding/</link>
+      <pubDate>Mon, 01 Jun 2020 23:59:24 -0400</pubDate>
+      <author>dservilla@gmail.com (Dylan Servilla)</author>
+      <guid>https://djsrv.github.io/scummvm/first-day-of-coding/</guid>
+      <description>&lt;p&gt;The first official day of coding has just ended!&lt;/p&gt;
+&lt;p&gt;I spent the last 9 days before this one driving from New Jersey to Arizona and back, so no progress to report on except this first official day, which I spent implementing Lingo factories and ironing out kinks in my workstation. Now Lingo supports creating factories and calling methods on them, and tomorrow I&amp;rsquo;ll be implementing default methods, instance variables, parent scripts, and whatever else pops up.&lt;/p&gt;
+&lt;p&gt;Hope to report on some more exciting progress soon!&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>A Week of Preparation</title>
