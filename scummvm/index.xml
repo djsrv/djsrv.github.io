@@ -14,6 +14,37 @@
     
     
     <item>
+      <title>Charlie and the Object Factory</title>
+      <link>https://djsrv.github.io/scummvm/charlie-and-the-object-factory/</link>
+      <pubDate>Sun, 07 Jun 2020 15:05:26 -0400</pubDate>
+      <author>dservilla@gmail.com (Dylan Servilla)</author>
+      <guid>https://djsrv.github.io/scummvm/charlie-and-the-object-factory/</guid>
+      <description>&lt;p&gt;&amp;ldquo;An important room, this!&amp;rdquo; cried Mr. Wonka, taking a bunch of keys from his pocket and slipping one into the keyhole of the door. &amp;ldquo;&lt;em&gt;This&lt;/em&gt; is the nerve center of the whole factory, the heart of the whole business! And so &lt;em&gt;beautiful&lt;/em&gt;! I &lt;em&gt;insist&lt;/em&gt; upon my rooms being beautiful! I can&amp;rsquo;t &lt;em&gt;abide&lt;/em&gt; ugliness in factories! &lt;em&gt;In&lt;/em&gt; we go, then! But &lt;em&gt;do&lt;/em&gt; be careful, my dear children! Don&amp;rsquo;t lose your heads! Don&amp;rsquo;t get overexcited! Keep very calm!&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;Mr. Wonka opened the door. Five children and nine grownups pushed their ways in—and, &lt;em&gt;oh&lt;/em&gt;, what an amazing sight it was that now met their eyes!&lt;/p&gt;
+
+&lt;iframe src=&#34;https://www.youtube.com/embed/oVb2VyXqwsE&#34; style=&#34;width: 560px; height: 315px; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;That&amp;rsquo;s right, the Director 2 Simple Factory example now runs in ScummVM (with some modifications to account for broken button rendering)! I had to implement several Lingo features for this movie, but the most important is, of course, factories, which are essentially Lingo&amp;rsquo;s first iteration of object-oriented programming.&lt;/p&gt;
+&lt;p&gt;For example, here&amp;rsquo;s a snippet from the &lt;code&gt;ballBoy&lt;/code&gt; factory used in this movie:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;factory ballBoy
+
+method mNew n, entry
+    instance ballNum,  spriteNum, count, entryNum
+
+    set entryNum = entry
+    set count = 0
+    set ballNum = n 
+    set spriteNum = n + 1
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;When the button in the bottom-right corner is clicked, a new &lt;code&gt;ballBoy&lt;/code&gt; object is created and associated with a ball sprite. This object becomes the control center of the sprite, giving it logic that keeps track of how many times it&amp;rsquo;s been clicked, changing its appearance, and allowing it to be dragged around.&lt;/p&gt;
+&lt;p&gt;Factories are used extensively throughout &lt;em&gt;Spaceship Warlock&lt;/em&gt;, so now that they&amp;rsquo;re implemented, I&amp;rsquo;ll be working directly on that game in the near future.&lt;/p&gt;
+&lt;p&gt;Besides factories, this week I implemented numerous event-handling features, and I discovered and fixed a bug that prevented certain scripts in Director 2 and 3 movies from being loaded. This caused a horrifying amount of unhandled Lingo syntax in &lt;em&gt;The Journeyman Project&lt;/em&gt; to suddenly reveal itself:
+&lt;img src=&#34;https://djsrv.github.io/img/jman-failure.png&#34; alt=&#34;Lots of failed tests in the Journeyman Project&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Luckily, sev has now fixed all of those errors.&lt;/p&gt;
+&lt;p&gt;Onward to more Lingo!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>First Day of Coding</title>
       <link>https://djsrv.github.io/scummvm/first-day-of-coding/</link>
       <pubDate>Mon, 01 Jun 2020 23:59:24 -0400</pubDate>

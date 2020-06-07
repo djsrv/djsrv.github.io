@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html><head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Charlie and the Object Factory - Dylan Servilla</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="Charlie and the Object Factory" />
+<meta property="og:description" content="&ldquo;An important room, this!&rdquo; cried Mr. Wonka, taking a bunch of keys from his pocket and slipping one into the keyhole of the door. &ldquo;This is the nerve center of the whole factory, the heart of the whole business! And so beautiful! I insist upon my rooms being beautiful! I can&rsquo;t abide ugliness in factories! In we go, then! But do be careful, my dear children! Don&rsquo;t lose your heads! Don&rsquo;t get overexcited!" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://djsrv.github.io/scummvm/charlie-and-the-object-factory/" />
+<meta property="article:published_time" content="2020-06-07T15:05:26-04:00" />
+<meta property="article:modified_time" content="2020-06-07T15:05:26-04:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Charlie and the Object Factory"/>
+<meta name="twitter:description" content="&ldquo;An important room, this!&rdquo; cried Mr. Wonka, taking a bunch of keys from his pocket and slipping one into the keyhole of the door. &ldquo;This is the nerve center of the whole factory, the heart of the whole business! And so beautiful! I insist upon my rooms being beautiful! I can&rsquo;t abide ugliness in factories! In we go, then! But do be careful, my dear children! Don&rsquo;t lose your heads! Don&rsquo;t get overexcited!"/>
+<script src="https://djsrv.github.io/js/feather.min.js"></script>
+	
+	<link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="https://djsrv.github.io/css/main.css" />
+</head><body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="https://djsrv.github.io/">Dylan Servilla</a>
+	</div>
+	<nav>
+		
+		<a href="/">Home</a>
+		
+		<a href="/scummvm">ScummVM</a>
+		
+	</nav>
+</header>
+
+<main>
+	<article>
+		<div class="title">
+			<h1 class="title">Charlie and the Object Factory</h1>
+			<div class="meta">Posted on Jun 7, 2020</div>
+		</div>
+		
+
+		<section class="body">
+			<p>&ldquo;An important room, this!&rdquo; cried Mr. Wonka, taking a bunch of keys from his pocket and slipping one into the keyhole of the door. &ldquo;<em>This</em> is the nerve center of the whole factory, the heart of the whole business! And so <em>beautiful</em>! I <em>insist</em> upon my rooms being beautiful! I can&rsquo;t <em>abide</em> ugliness in factories! <em>In</em> we go, then! But <em>do</em> be careful, my dear children! Don&rsquo;t lose your heads! Don&rsquo;t get overexcited! Keep very calm!&rdquo;</p>
+<p>Mr. Wonka opened the door. Five children and nine grownups pushed their ways in—and, <em>oh</em>, what an amazing sight it was that now met their eyes!</p>
+
+<iframe src="https://www.youtube.com/embed/oVb2VyXqwsE" style="width: 560px; height: 315px; border:0;" allowfullscreen title="YouTube Video"></iframe>
+
+<p>That&rsquo;s right, the Director 2 Simple Factory example now runs in ScummVM (with some modifications to account for broken button rendering)! I had to implement several Lingo features for this movie, but the most important is, of course, factories, which are essentially Lingo&rsquo;s first iteration of object-oriented programming.</p>
+<p>For example, here&rsquo;s a snippet from the <code>ballBoy</code> factory used in this movie:</p>
+<pre><code>factory ballBoy
+
+method mNew n, entry
+    instance ballNum,  spriteNum, count, entryNum
+
+    set entryNum = entry
+    set count = 0
+    set ballNum = n 
+    set spriteNum = n + 1
+</code></pre><p>When the button in the bottom-right corner is clicked, a new <code>ballBoy</code> object is created and associated with a ball sprite. This object becomes the control center of the sprite, giving it logic that keeps track of how many times it&rsquo;s been clicked, changing its appearance, and allowing it to be dragged around.</p>
+<p>Factories are used extensively throughout <em>Spaceship Warlock</em>, so now that they&rsquo;re implemented, I&rsquo;ll be working directly on that game in the near future.</p>
+<p>Besides factories, this week I implemented numerous event-handling features, and I discovered and fixed a bug that prevented certain scripts in Director 2 and 3 movies from being loaded. This caused a horrifying amount of unhandled Lingo syntax in <em>The Journeyman Project</em> to suddenly reveal itself:
+<img src="/img/jman-failure.png" alt="Lots of failed tests in the Journeyman Project"></p>
+<p>Luckily, sev has now fixed all of those errors.</p>
+<p>Onward to more Lingo!</p>
+
+		</section>
+
+		<div class="post-tags">
+			
+			
+			
+		</div>
+	</article>
+</main>
+<footer>
+<hr><a class="soc" href="https://github.com/djsrv" title="GitHub"><i data-feather="github"></i></a>|<a class="soc" href="/index.xml" title="RSS Feed"><i data-feather="rss"></i></a>|⚡️
+	2020  <a href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
+</footer>
+
+
+<script>
+      feather.replace()
+</script>
+
+</div>
+    </body>
+</html>
