@@ -8,10 +8,33 @@
     <language>en-us</language>
     <managingEditor>dservilla@gmail.com (Dylan Servilla)</managingEditor>
     <webMaster>dservilla@gmail.com (Dylan Servilla)</webMaster>
-    <lastBuildDate>Sun, 07 Jun 2020 15:05:26 -0400</lastBuildDate>
+    <lastBuildDate>Sun, 14 Jun 2020 18:58:51 -0400</lastBuildDate>
     
 	<atom:link href="https://djsrv.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>FileIO Fun</title>
+      <link>https://djsrv.github.io/scummvm/fileio-fun/</link>
+      <pubDate>Sun, 14 Jun 2020 18:58:51 -0400</pubDate>
+      <author>dservilla@gmail.com (Dylan Servilla)</author>
+      <guid>https://djsrv.github.io/scummvm/fileio-fun/</guid>
+      <description>&lt;p&gt;This week my focus was on our first XObject, FileIO, which allows Lingo to read/write files:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;set file = FileIO(mNew, &amp;quot;write&amp;quot;, &amp;quot;foo.txt&amp;quot;)
+file(mWriteString, &amp;quot;Hello, world!&amp;quot; &amp;amp; RETURN)
+file(mDispose)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Relatively simple, so FileIO itself didn&amp;rsquo;t take long to implement. After that was done, I spent most of the week hunting down and fixing bugs and missing Lingo features in two major FileIO examples, &lt;em&gt;The Apartment&lt;/em&gt;&amp;rsquo;s Saving Text and &lt;em&gt;Spaceship Warlock&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Funnily enough, I managed to find more scripts that weren&amp;rsquo;t being loaded, and of course, &lt;em&gt;The Journeyman Project&lt;/em&gt; was hiding more syntax errors that revealed themselves once these scripts were properly handled:
+&lt;img src=&#34;https://djsrv.github.io/img/jman-failure2.png&#34; alt=&#34;Many more failed tests in the Journeyman Project&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Journeyman&lt;/em&gt; is a treasure trove of syntax errors. :)&lt;/p&gt;
+&lt;p&gt;Now that all those problems are addressed, I&amp;rsquo;m proud to announce that &lt;em&gt;Spaceship Warlock&lt;/em&gt; can now save and load games!&lt;/p&gt;
+
+&lt;iframe src=&#34;https://www.youtube.com/embed/RR1D1DxUvFM&#34; style=&#34;width: 560px; height: 315px; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;This will allow us to progress through the game in more than one sitting, making testing the whole thing much easier.&lt;/p&gt;
+&lt;p&gt;This coming week I&amp;rsquo;m planning to identify and implement more missing Lingo throughout the game, hopefully bringing it to a much more playable state. See you in a week or so with news on that!&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Charlie and the Object Factory</title>
