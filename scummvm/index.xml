@@ -24,8 +24,8 @@
 file(mWriteString, &amp;quot;Hello, world!&amp;quot; &amp;amp; RETURN)
 file(mDispose)
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Relatively simple, so FileIO itself didn&amp;rsquo;t take long to implement. After that was done, I spent most of the week hunting down and fixing bugs and missing Lingo features in two major FileIO examples, &lt;em&gt;The Apartment&lt;/em&gt;&amp;rsquo;s Saving Text and &lt;em&gt;Spaceship Warlock&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;Funnily enough, I managed to find more scripts that weren&amp;rsquo;t being loaded, and of course, &lt;em&gt;The Journeyman Project&lt;/em&gt; was hiding more syntax errors that revealed themselves once these scripts were properly handled:
-&lt;img src=&#34;https://djsrv.github.io/img/jman-failure2.png&#34; alt=&#34;Many more failed tests in the Journeyman Project&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Funnily enough, I managed to find more scripts that weren&amp;rsquo;t being loaded, and of course, &lt;em&gt;The Journeyman Project&lt;/em&gt; was hiding more syntax errors that revealed themselves once these scripts were properly handled:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://djsrv.github.io/img/jman-failure2.png&#34; alt=&#34;Many more failed tests in the Journeyman Project&#34;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;Journeyman&lt;/em&gt; is a treasure trove of syntax errors. :)&lt;/p&gt;
 &lt;p&gt;Now that all those problems are addressed, I&amp;rsquo;m proud to announce that &lt;em&gt;Spaceship Warlock&lt;/em&gt; can now save and load games!&lt;/p&gt;
 
