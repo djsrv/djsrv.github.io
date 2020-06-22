@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html><head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Sounds, Events, and Bugs - Dylan Servilla</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="Sounds, Events, and Bugs" />
+<meta property="og:description" content="This last week was a busy one, with my focus split between three main tasks.
+The first two days, I played through the beginning of Spaceship Warlock, identifying and fixing any Lingo issues. I quickly got frustrated with not being able to hear the game&rsquo;s dialogue, so I improved our decoder for Macintosh snd  resources so that it could handle Warlock&rsquo;s sounds:
+ The next day, I focused on event handling: fixing some strange bugs, and then rewriting most of our event code to allow for proper event delegation." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://djsrv.github.io/scummvm/sounds-events-bugs/" />
+<meta property="article:published_time" content="2020-06-21T23:23:04-04:00" />
+<meta property="article:modified_time" content="2020-06-21T23:23:04-04:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Sounds, Events, and Bugs"/>
+<meta name="twitter:description" content="This last week was a busy one, with my focus split between three main tasks.
+The first two days, I played through the beginning of Spaceship Warlock, identifying and fixing any Lingo issues. I quickly got frustrated with not being able to hear the game&rsquo;s dialogue, so I improved our decoder for Macintosh snd  resources so that it could handle Warlock&rsquo;s sounds:
+ The next day, I focused on event handling: fixing some strange bugs, and then rewriting most of our event code to allow for proper event delegation."/>
+<script src="https://djsrv.github.io/js/feather.min.js"></script>
+	
+	<link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="https://djsrv.github.io/css/main.css" />
+</head><body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="https://djsrv.github.io/">Dylan Servilla</a>
+	</div>
+	<nav>
+		
+		<a href="/">Home</a>
+		
+		<a href="/scummvm">ScummVM</a>
+		
+	</nav>
+</header>
+
+<main>
+	<article>
+		<div class="title">
+			<h1 class="title">Sounds, Events, and Bugs</h1>
+			<div class="meta">Posted on Jun 21, 2020</div>
+		</div>
+		
+
+		<section class="body">
+			<p>This last week was a busy one, with my focus split between three main tasks.</p>
+<p>The first two days, I played through the beginning of <em>Spaceship Warlock</em>, identifying and fixing any Lingo issues. I quickly got frustrated with not being able to hear the game&rsquo;s dialogue, so I improved our decoder for Macintosh <code>snd </code> resources so that it could handle <em>Warlock</em>&rsquo;s sounds:</p>
+
+<iframe src="https://www.youtube.com/embed/KVChLrPZds8" style="width: 560px; height: 315px; border:0;" allowfullscreen title="YouTube Video"></iframe>
+
+<p>The next day, I focused on event handling: fixing some strange bugs, and then rewriting most of our event code to allow for proper event delegation. Only one object is supposed to handle each event—sometimes a sprite, sometimes a cast member, sometimes the frame, and sometimes the movie. I still haven&rsquo;t perfected the process of determining which object it should be in every case, but the new system is a heck of a lot better than before, when we were just firing off the event to everything that could possibly handle it.</p>
+<p>For the rest of the week, I began implementing parent scripts, Lingo&rsquo;s second iteration of object-oriented programming. With factories already implemented, this was relatively easy, but the test movies I&rsquo;ve been working with, the object-oriented bug examples from <em>Lingo Workshop</em>, have been surprisingly hard to get working, using all sorts of uncommon Lingo features. Our implementations of many of these features were buggy, to say the least, and I&rsquo;ve been slowly working through them.</p>
+<p><img src="/img/bug-garden.png" alt="Bug garden"></p>
+<p>I&rsquo;ve finally squashed enough of the bad type of bug to get the good type to display! Still, there&rsquo;s plenty of work to do, which I will get to tomorrow.</p>
+
+		</section>
+
+		<div class="post-tags">
+			
+			
+			
+		</div>
+	</article>
+</main>
+<footer>
+<hr><a class="soc" href="https://github.com/djsrv" title="GitHub"><i data-feather="github"></i></a>|<a class="soc" href="/index.xml" title="RSS Feed"><i data-feather="rss"></i></a>|⚡️
+	2020  <a href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
+</footer>
+
+
+<script>
+      feather.replace()
+</script>
+
+</div>
+    </body>
+</html>

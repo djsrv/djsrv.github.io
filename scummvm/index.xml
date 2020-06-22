@@ -14,6 +14,24 @@
     
     
     <item>
+      <title>Sounds, Events, and Bugs</title>
+      <link>https://djsrv.github.io/scummvm/sounds-events-bugs/</link>
+      <pubDate>Sun, 21 Jun 2020 23:23:04 -0400</pubDate>
+      <author>dservilla@gmail.com (Dylan Servilla)</author>
+      <guid>https://djsrv.github.io/scummvm/sounds-events-bugs/</guid>
+      <description>&lt;p&gt;This last week was a busy one, with my focus split between three main tasks.&lt;/p&gt;
+&lt;p&gt;The first two days, I played through the beginning of &lt;em&gt;Spaceship Warlock&lt;/em&gt;, identifying and fixing any Lingo issues. I quickly got frustrated with not being able to hear the game&amp;rsquo;s dialogue, so I improved our decoder for Macintosh &lt;code&gt;snd &lt;/code&gt; resources so that it could handle &lt;em&gt;Warlock&lt;/em&gt;&amp;rsquo;s sounds:&lt;/p&gt;
+
+&lt;iframe src=&#34;https://www.youtube.com/embed/KVChLrPZds8&#34; style=&#34;width: 560px; height: 315px; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;The next day, I focused on event handling: fixing some strange bugs, and then rewriting most of our event code to allow for proper event delegation. Only one object is supposed to handle each event—sometimes a sprite, sometimes a cast member, sometimes the frame, and sometimes the movie. I still haven&amp;rsquo;t perfected the process of determining which object it should be in every case, but the new system is a heck of a lot better than before, when we were just firing off the event to everything that could possibly handle it.&lt;/p&gt;
+&lt;p&gt;For the rest of the week, I began implementing parent scripts, Lingo&amp;rsquo;s second iteration of object-oriented programming. With factories already implemented, this was relatively easy, but the test movies I&amp;rsquo;ve been working with, the object-oriented bug examples from &lt;em&gt;Lingo Workshop&lt;/em&gt;, have been surprisingly hard to get working, using all sorts of uncommon Lingo features. Our implementations of many of these features were buggy, to say the least, and I&amp;rsquo;ve been slowly working through them.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://djsrv.github.io/img/bug-garden.png&#34; alt=&#34;Bug garden&#34;&gt;&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;ve finally squashed enough of the bad type of bug to get the good type to display! Still, there&amp;rsquo;s plenty of work to do, which I will get to tomorrow.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>FileIO Fun</title>
       <link>https://djsrv.github.io/scummvm/fileio-fun/</link>
       <pubDate>Sun, 14 Jun 2020 18:58:51 -0400</pubDate>
