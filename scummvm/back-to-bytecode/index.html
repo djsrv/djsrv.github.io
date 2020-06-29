@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html><head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Back to Bytecode - Dylan Servilla</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="Back to Bytecode" />
+<meta property="og:description" content="This week I wrapped up work on parent scripts and factories, starting with some bug fixes and minor refactoring. The Lingo in Lingo Workshop&rsquo;s Bug Garden movie now fully works!
+ After getting Bug Garden working, I began implementation of the bytecode versions of parent scripts and factories. For those not familiar with the Director engine, there are two ways we load Lingo scripts. From Director 2-3, Lingo was stored in Director movies as source code, which we parse and compile to custom bytecode." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://djsrv.github.io/scummvm/back-to-bytecode/" />
+<meta property="article:published_time" content="2020-06-28T22:11:51-04:00" />
+<meta property="article:modified_time" content="2020-06-28T22:11:51-04:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Back to Bytecode"/>
+<meta name="twitter:description" content="This week I wrapped up work on parent scripts and factories, starting with some bug fixes and minor refactoring. The Lingo in Lingo Workshop&rsquo;s Bug Garden movie now fully works!
+ After getting Bug Garden working, I began implementation of the bytecode versions of parent scripts and factories. For those not familiar with the Director engine, there are two ways we load Lingo scripts. From Director 2-3, Lingo was stored in Director movies as source code, which we parse and compile to custom bytecode."/>
+<script src="https://djsrv.github.io/js/feather.min.js"></script>
+	
+	<link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="https://djsrv.github.io/css/main.css" />
+</head><body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="https://djsrv.github.io/">Dylan Servilla</a>
+	</div>
+	<nav>
+		
+		<a href="/">Home</a>
+		
+		<a href="/scummvm">ScummVM</a>
+		
+	</nav>
+</header>
+
+<main>
+	<article>
+		<div class="title">
+			<h1 class="title">Back to Bytecode</h1>
+			<div class="meta">Posted on Jun 28, 2020</div>
+		</div>
+		
+
+		<section class="body">
+			<p>This week I wrapped up work on parent scripts and factories, starting with some bug fixes and minor refactoring. The Lingo in <em>Lingo Workshop</em>&rsquo;s Bug Garden movie now fully works!</p>
+
+<iframe src="https://www.youtube.com/embed/QDM4wUz2Oo4" style="width: 560px; height: 315px; border:0;" allowfullscreen title="YouTube Video"></iframe>
+
+<p>After getting Bug Garden working, I began implementation of the bytecode versions of parent scripts and factories. For those not familiar with the Director engine, there are two ways we load Lingo scripts. From Director 2-3, Lingo was stored in Director movies as source code, which we parse and compile to custom bytecode. Starting in Director 4, Lingo was compiled to a <a href="http://fileformats.archiveteam.org/wiki/Lingo_bytecode">bytecode</a> which is similar to our own, but it has a good number of differences. This bytecode is stored within movies&rsquo; <code>Lscr</code> chunks, which also contain script metadata, much of which we don&rsquo;t yet handle. Due to the bytecode differences and unhandled metadata, parent scripts and factories only worked when the Lingo was loaded from source code, not from <code>Lscr</code>.</p>
+<p>For this, I needed to get back to my Director roots, which started with reverse-engineering <code>Lscr</code> for the development of <a href="https://github.com/Earthquake-Project/ProjectorRays">ProjectorRays</a>, a Lingo bytecode decompiler. I already knew how to handle parent scripts from ProjectorRays, but factories were a mystery, so I needed to go back to the old strategy of incrementally changing test movies and watching what data changes. I&rsquo;ll spare you the fine details of how factories are stored, but basically scripts which contain factories are split into multiple <code>Lscr</code> chunks, with one chunk for each factory, and there&rsquo;s some metadata which ties these chunks together. With that work done, parent scripts and factories can now be loaded from bytecode.</p>
+<p>I also did some more work with events, which I will continue this coming week. Last week I said that only one object is supposed to handle each event, which is only partially true. Sev pointed out that an event handler can call <code>pass</code>, which will pass the event to the next object in the chain of potential handlers, so I needed to make further changes to event delegation to handle that. Now I&rsquo;m in the process of checking event execution order against different versions of Director, and then it&rsquo;s on to implementing windows.</p>
+
+		</section>
+
+		<div class="post-tags">
+			
+			
+			
+		</div>
+	</article>
+</main>
+<footer>
+<hr><a class="soc" href="https://github.com/djsrv" title="GitHub"><i data-feather="github"></i></a>|<a class="soc" href="/index.xml" title="RSS Feed"><i data-feather="rss"></i></a>|⚡️
+	2020  <a href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
+</footer>
+
+
+<script>
+      feather.replace()
+</script>
+
+</div>
+    </body>
+</html>

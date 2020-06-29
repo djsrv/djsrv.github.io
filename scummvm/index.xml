@@ -14,6 +14,22 @@
     
     
     <item>
+      <title>Back to Bytecode</title>
+      <link>https://djsrv.github.io/scummvm/back-to-bytecode/</link>
+      <pubDate>Sun, 28 Jun 2020 22:11:51 -0400</pubDate>
+      <author>dservilla@gmail.com (Dylan Servilla)</author>
+      <guid>https://djsrv.github.io/scummvm/back-to-bytecode/</guid>
+      <description>&lt;p&gt;This week I wrapped up work on parent scripts and factories, starting with some bug fixes and minor refactoring. The Lingo in &lt;em&gt;Lingo Workshop&lt;/em&gt;&amp;rsquo;s Bug Garden movie now fully works!&lt;/p&gt;
+
+&lt;iframe src=&#34;https://www.youtube.com/embed/QDM4wUz2Oo4&#34; style=&#34;width: 560px; height: 315px; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;After getting Bug Garden working, I began implementation of the bytecode versions of parent scripts and factories. For those not familiar with the Director engine, there are two ways we load Lingo scripts. From Director 2-3, Lingo was stored in Director movies as source code, which we parse and compile to custom bytecode. Starting in Director 4, Lingo was compiled to a &lt;a href=&#34;http://fileformats.archiveteam.org/wiki/Lingo_bytecode&#34;&gt;bytecode&lt;/a&gt; which is similar to our own, but it has a good number of differences. This bytecode is stored within movies&amp;rsquo; &lt;code&gt;Lscr&lt;/code&gt; chunks, which also contain script metadata, much of which we don&amp;rsquo;t yet handle. Due to the bytecode differences and unhandled metadata, parent scripts and factories only worked when the Lingo was loaded from source code, not from &lt;code&gt;Lscr&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;For this, I needed to get back to my Director roots, which started with reverse-engineering &lt;code&gt;Lscr&lt;/code&gt; for the development of &lt;a href=&#34;https://github.com/Earthquake-Project/ProjectorRays&#34;&gt;ProjectorRays&lt;/a&gt;, a Lingo bytecode decompiler. I already knew how to handle parent scripts from ProjectorRays, but factories were a mystery, so I needed to go back to the old strategy of incrementally changing test movies and watching what data changes. I&amp;rsquo;ll spare you the fine details of how factories are stored, but basically scripts which contain factories are split into multiple &lt;code&gt;Lscr&lt;/code&gt; chunks, with one chunk for each factory, and there&amp;rsquo;s some metadata which ties these chunks together. With that work done, parent scripts and factories can now be loaded from bytecode.&lt;/p&gt;
+&lt;p&gt;I also did some more work with events, which I will continue this coming week. Last week I said that only one object is supposed to handle each event, which is only partially true. Sev pointed out that an event handler can call &lt;code&gt;pass&lt;/code&gt;, which will pass the event to the next object in the chain of potential handlers, so I needed to make further changes to event delegation to handle that. Now I&amp;rsquo;m in the process of checking event execution order against different versions of Director, and then it&amp;rsquo;s on to implementing windows.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Sounds, Events, and Bugs</title>
       <link>https://djsrv.github.io/scummvm/sounds-events-bugs/</link>
       <pubDate>Sun, 21 Jun 2020 23:23:04 -0400</pubDate>
