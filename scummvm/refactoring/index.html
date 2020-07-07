@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html><head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Refactoring - Dylan Servilla</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="Refactoring" />
+<meta property="og:description" content="This last week I got some boring but important work done. After completing some odd jobs like implementing event delegation for Director 2-3 and TrueType font loading, I began refactoring the Director engine to make it flexible enough to handle Movies In A Window (MIAWs), or multiple movies running in parallel.
+For those not familiar, Director uses a movie metaphor for development. A movie&rsquo;s major components are:
+ The cast, which contains cast members." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://djsrv.github.io/scummvm/refactoring/" />
+<meta property="article:published_time" content="2020-07-06T20:50:26-04:00" />
+<meta property="article:modified_time" content="2020-07-06T20:50:26-04:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Refactoring"/>
+<meta name="twitter:description" content="This last week I got some boring but important work done. After completing some odd jobs like implementing event delegation for Director 2-3 and TrueType font loading, I began refactoring the Director engine to make it flexible enough to handle Movies In A Window (MIAWs), or multiple movies running in parallel.
+For those not familiar, Director uses a movie metaphor for development. A movie&rsquo;s major components are:
+ The cast, which contains cast members."/>
+<script src="https://djsrv.github.io/js/feather.min.js"></script>
+	
+	<link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="https://djsrv.github.io/css/main.css" />
+</head><body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="https://djsrv.github.io/">Dylan Servilla</a>
+	</div>
+	<nav>
+		
+		<a href="/">Home</a>
+		
+		<a href="/scummvm">ScummVM</a>
+		
+	</nav>
+</header>
+
+<main>
+	<article>
+		<div class="title">
+			<h1 class="title">Refactoring</h1>
+			<div class="meta">Posted on Jul 6, 2020</div>
+		</div>
+		
+
+		<section class="body">
+			<p>This last week I got some boring but important work done. After completing some odd jobs like implementing event delegation for Director 2-3 and TrueType font loading, I began refactoring the Director engine to make it flexible enough to handle Movies In A Window (MIAWs), or multiple movies running in parallel.</p>
+<p>For those not familiar, Director uses a movie metaphor for development. A movie&rsquo;s major components are:</p>
+<ul>
+<li>The cast, which contains cast members. Cast members can be visual (such as bitmaps or text), they can be sounds, or they can be scripts.</li>
+<li>The stage, where sprites (instances of cast members) are displayed.</li>
+<li>The score, a sequence of frames which dictate sprite placement, sounds, script execution, and much more.</li>
+</ul>
+<p>Previously, all these jobs were handled by an enormous Score class. This worked fine when we were only playing one movie at a time, but to support MIAWs, things needed to be a whole lot more modular. Nathanael separated rendering code into a Stage class, while I separated the Cast and Movie from the Score, which took quite a long time.</p>
+<p>After that, I began working on displaying movies within our classic Mac Window manager.</p>
+<p><img src="/img/warlock-window.png" alt="Warlock in a window"></p>
+<p>Today I began implementing the Lingo side of MIAWs, so I hope to have more news on them soon!</p>
+
+		</section>
+
+		<div class="post-tags">
+			
+			
+			
+		</div>
+	</article>
+</main>
+<footer>
+<hr><a class="soc" href="https://github.com/djsrv" title="GitHub"><i data-feather="github"></i></a>|<a class="soc" href="/index.xml" title="RSS Feed"><i data-feather="rss"></i></a>|⚡️
+	2020  <a href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
+</footer>
+
+
+<script>
+      feather.replace()
+</script>
+
+</div>
+    </body>
+</html>

@@ -14,6 +14,26 @@
     
     
     <item>
+      <title>Refactoring</title>
+      <link>https://djsrv.github.io/scummvm/refactoring/</link>
+      <pubDate>Mon, 06 Jul 2020 20:50:26 -0400</pubDate>
+      <author>dservilla@gmail.com (Dylan Servilla)</author>
+      <guid>https://djsrv.github.io/scummvm/refactoring/</guid>
+      <description>&lt;p&gt;This last week I got some boring but important work done. After completing some odd jobs like implementing event delegation for Director 2-3 and TrueType font loading, I began refactoring the Director engine to make it flexible enough to handle Movies In A Window (MIAWs), or multiple movies running in parallel.&lt;/p&gt;
+&lt;p&gt;For those not familiar, Director uses a movie metaphor for development. A movie&amp;rsquo;s major components are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The cast, which contains cast members. Cast members can be visual (such as bitmaps or text), they can be sounds, or they can be scripts.&lt;/li&gt;
+&lt;li&gt;The stage, where sprites (instances of cast members) are displayed.&lt;/li&gt;
+&lt;li&gt;The score, a sequence of frames which dictate sprite placement, sounds, script execution, and much more.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Previously, all these jobs were handled by an enormous Score class. This worked fine when we were only playing one movie at a time, but to support MIAWs, things needed to be a whole lot more modular. Nathanael separated rendering code into a Stage class, while I separated the Cast and Movie from the Score, which took quite a long time.&lt;/p&gt;
+&lt;p&gt;After that, I began working on displaying movies within our classic Mac Window manager.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://djsrv.github.io/img/warlock-window.png&#34; alt=&#34;Warlock in a window&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Today I began implementing the Lingo side of MIAWs, so I hope to have more news on them soon!&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Back to Bytecode</title>
       <link>https://djsrv.github.io/scummvm/back-to-bytecode/</link>
       <pubDate>Sun, 28 Jun 2020 22:11:51 -0400</pubDate>
