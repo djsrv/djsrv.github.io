@@ -8,10 +8,27 @@
     <language>en-us</language>
     <managingEditor>dservilla@gmail.com (Dylan Servilla)</managingEditor>
     <webMaster>dservilla@gmail.com (Dylan Servilla)</webMaster>
-    <lastBuildDate>Mon, 06 Jul 2020 20:50:26 -0400</lastBuildDate>
+    <lastBuildDate>Mon, 13 Jul 2020 15:26:00 -0400</lastBuildDate>
     
 	<atom:link href="https://djsrv.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>MIAWs</title>
+      <link>https://djsrv.github.io/scummvm/miaws/</link>
+      <pubDate>Mon, 13 Jul 2020 15:26:00 -0400</pubDate>
+      <author>dservilla@gmail.com (Dylan Servilla)</author>
+      <guid>https://djsrv.github.io/scummvm/miaws/</guid>
+      <description>&lt;p&gt;This last week I finished up my refactoring spree, adding an object interface which allows any type to be treated as a Lingo object. With this done, it allowed for our Stage to be turned into a Lingo object, enabling&amp;hellip;&lt;/p&gt;
+&lt;p&gt;Movies In A Window!&lt;/p&gt;
+
+&lt;iframe src=&#34;https://www.youtube.com/embed/h8eKy7ymFOU&#34; style=&#34;width: 560px; height: 315px; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;Now new windows can be created/destroyed and hidden/shown with &lt;code&gt;open window &amp;quot;ball&amp;quot;&lt;/code&gt;, &lt;code&gt;close window &amp;quot;ball&amp;quot;&lt;/code&gt;, &lt;code&gt;forget window &amp;quot;ball&amp;quot;&lt;/code&gt;, etc. There&amp;rsquo;s still a good number of Lingo methods and properties to implement, and rendering issues which need to be sorted out, but for now I&amp;rsquo;m focusing on fixing the large number of Buildbot errors which have recently piled up.&lt;/p&gt;
+&lt;p&gt;In particular, I&amp;rsquo;ve been trying to figure out how to handle duplicate script definitions in Majestic and other games, which has felt like a bit of a wild goose chase. After spending the weekend searching, I&amp;rsquo;ve identified how to handle 6 of roughly 180 duplicate scripts, so I&amp;rsquo;ll have to resume this hunt later.&lt;/p&gt;
+&lt;p&gt;For now, I&amp;rsquo;m fixing up issues in the Lingo grammar, which is going much more smoothly. :)&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Refactoring</title>
