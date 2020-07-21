@@ -8,10 +8,72 @@
     <language>en-us</language>
     <managingEditor>dservilla@gmail.com (Dylan Servilla)</managingEditor>
     <webMaster>dservilla@gmail.com (Dylan Servilla)</webMaster>
-    <lastBuildDate>Mon, 13 Jul 2020 15:26:00 -0400</lastBuildDate>
+    <lastBuildDate>Mon, 20 Jul 2020 23:34:57 -0400</lastBuildDate>
     
 	<atom:link href="https://djsrv.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Learning the Lingo</title>
+      <link>https://djsrv.github.io/scummvm/learning-the-lingo/</link>
+      <pubDate>Mon, 20 Jul 2020 23:34:57 -0400</pubDate>
+      <author>dservilla@gmail.com (Dylan Servilla)</author>
+      <guid>https://djsrv.github.io/scummvm/learning-the-lingo/</guid>
+      <description>&lt;p&gt;This week I worked out some longstanding Lingo issues!&lt;/p&gt;
+&lt;h2 id=&#34;duplicate-scripts&#34;&gt;Duplicate Scripts&lt;/h2&gt;
+&lt;p&gt;The first issue was duplicate scripts in Director 4 movies. Each cast member should have at most one Lingo script associated with it, but we were running into movies in which a cast member seemingly had several scripts. There was no obvious way to deal with this - redefining the script usually led to incorrect behavior, and so did keeping the original definition.&lt;/p&gt;
+&lt;p&gt;These duplicate scripts were rare in most movies, so the problem went ignored for a while, but in our recently added target &lt;em&gt;Majestic Part 1: Alien Encounter&lt;/em&gt;, there were several hundred scripts, and almost every one conflicted with another.&lt;/p&gt;
+&lt;p&gt;Initially, I thought that there must be something that indicated certain scripts, or at least certain handlers within these scripts, were unused. The first place I investigated was the script&amp;rsquo;s &amp;ldquo;handler vectors.&amp;rdquo; These differed between some of the duplicate scripts, and I thought they might hold the key to how the script conflicts should be handled.&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;Handler vectors&amp;rdquo; were identified as an array of 16-bit integers in &lt;a href=&#34;https://docs.google.com/document/d/1jDBXE4Wv1AEga-o1Wi8xtlNZY4K2fHxW2Xs8RgARrqk/edit&#34;&gt;Anthony Klein&amp;rsquo;s Director documentation&lt;/a&gt;, but there was no explanation of their purpose. I got in touch with Anthony, but he couldn&amp;rsquo;t remember what they were for, and they remained a mystery to me for weeks. Once I began deeper investigation, it quickly became apparent that the &amp;ldquo;handler vectors&amp;rdquo; are just used to map event IDs to handler IDs. Totally unrelated.&lt;/p&gt;
+&lt;p&gt;The next suspect was the Lingo context, a container which maps script IDs to script data:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Section LctX {
+	Struct header {
+		...
+		Uint16 [big] freePtr
+	}
+	...
+	Array scripts(count) {
+		Struct scriptLink {
+			Uint32 unknown
+			Uint32 [big] ID // use MMAP!
+			Uint16 [big] used // 0 : unused , 4: used
+			Uint12 [big] link // For unused entries: link to next unused, or -1.
+		}
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/Earthquake-Project/Format-Documentation/blob/master/structure/scripting/FormatNotes_Scripts.txt&#34;&gt;(Source: Brian151)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The two areas of interest are:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;The script entry&amp;rsquo;s &lt;code&gt;used&lt;/code&gt; field&lt;/li&gt;
+&lt;li&gt;A linked list of unused scripts, which begins at the script entry at index &lt;code&gt;freePtr&lt;/code&gt;. The entry&amp;rsquo;s &lt;code&gt;link&lt;/code&gt; field gives the index of the next unused script, or -1.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;However, after much investigation, it seems that there is actually no difference in how a script with &lt;code&gt;used = 0&lt;/code&gt; and a script with &lt;code&gt;used = 4&lt;/code&gt; should be handled. The linked list does indeed indicate unused scripts, but all of the entries in the list seem to have an &lt;code&gt;ID&lt;/code&gt; of -1. Thus, these unused scripts have no script data associated with them, and they were never being loaded in the first place. There was no way they could be causing conflicts, since they didn&amp;rsquo;t really exist.&lt;/p&gt;
+&lt;p&gt;To finally solve the mystery, I had to throw out what I thought I knew about how Lingo scripts are linked to cast members. For years, the Director reverse engineering community understood that:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The scripts are not owned by their individual Cast Members in the Key Table [which links cast members to most of their assets] as you may expect. Instead, each Lingo Script has the number of its corresponding Cast Member &lt;a href=&#34;https://docs.google.com/document/d/1jDBXE4Wv1AEga-o1Wi8xtlNZY4K2fHxW2Xs8RgARrqk/edit&#34;&gt;(Source: Anthony Klein)&lt;/a&gt;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;After a few days of testing, I noticed that the cast member ID stored within Lingo scripts was sometimes incorrect. Or, as in &lt;em&gt;Majestic&lt;/em&gt;, almost always incorrect. There had to be some other way by which cast members were linked to their scripts.&lt;/p&gt;
+&lt;p&gt;The obvious place to look was in the cast member data, which is split into two parts - data specific to the cast member type, followed by largely standard cast member info. We had previously identified a &lt;code&gt;scriptId&lt;/code&gt; field in the data specific to script cast members, and these IDs always seemed to be correct. However, other types of cast members could have scripts as well, and since they wouldn&amp;rsquo;t have this field, this solution wouldn&amp;rsquo;t work for them. Or so it seemed.&lt;/p&gt;
+&lt;p&gt;Long story short, we were treating too many bytes as type-specific data, and the &lt;code&gt;scriptId&lt;/code&gt; was actually in the standard cast member info. Once that was fixed, every cast member had a single, correct &lt;code&gt;scriptId&lt;/code&gt; associated with it. Use that to link cast members to the scripts, and no more duplicate scripts!&lt;/p&gt;
+&lt;h2 id=&#34;grammar&#34;&gt;Grammar&lt;/h2&gt;
+&lt;p&gt;Next was improvements to the Lingo grammar.&lt;/p&gt;
+&lt;p&gt;First, I needed to differentiate between statements and expressions. An expression by itself, like &lt;code&gt;2 + 2&lt;/code&gt;, isn&amp;rsquo;t a valid Lingo script - it needs to be an argument to a statement, like &lt;code&gt;put 2 + 2&lt;/code&gt;. However, we were treating expressions and statements exactly the same, which allowed incorrect scripts and significantly complicated the grammar. Once this was fixed, half of the grammar&amp;rsquo;s 441 conflicts were gone.&lt;/p&gt;
+&lt;p&gt;Next, I needed to get rid of the differentiation between Lingo&amp;rsquo;s subroutine types. Confusingly, Lingo has (at least) 3 different types, with overlapping purposes:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Commands - These are built-in, and invoked by a call statement, like &lt;code&gt;foo()&lt;/code&gt; or &lt;code&gt;foo&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Functions - These are also built-in, and invoked by a call expression, like &lt;code&gt;put foo()&lt;/code&gt;. Very rarely, you can also invoke them as statements.&lt;/li&gt;
+&lt;li&gt;Handlers - These are user-defined, and can be invoked by either call statements or call expressions.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Now, these are separate things, but they should only be treated separately during execution. Previously we were differentiating them in the grammar, which again complicated things.&lt;/p&gt;
+&lt;p&gt;With that done, I began general cleanup. Reorganizing things where conflicts could be eliminated, reducing the use of right recursion, and adding support for fun statements like this one:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;put cast cast
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;What should this do? Why, of course, it prints the cast member whose ID is equal to the variable &lt;code&gt;cast&lt;/code&gt;:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;set cast = 1
+put cast cast
+-- (cast 1)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;All in all, the grammar is now truer to the original, and we&amp;rsquo;re down to 6 conflicts from 441!&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>MIAWs</title>

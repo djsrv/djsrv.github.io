@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html><head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Learning the Lingo - Dylan Servilla</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="Learning the Lingo" />
+<meta property="og:description" content="This week I worked out some longstanding Lingo issues!
+Duplicate Scripts The first issue was duplicate scripts in Director 4 movies. Each cast member should have at most one Lingo script associated with it, but we were running into movies in which a cast member seemingly had several scripts. There was no obvious way to deal with this - redefining the script usually led to incorrect behavior, and so did keeping the original definition." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://djsrv.github.io/scummvm/learning-the-lingo/" />
+<meta property="article:published_time" content="2020-07-20T23:34:57-04:00" />
+<meta property="article:modified_time" content="2020-07-20T23:34:57-04:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Learning the Lingo"/>
+<meta name="twitter:description" content="This week I worked out some longstanding Lingo issues!
+Duplicate Scripts The first issue was duplicate scripts in Director 4 movies. Each cast member should have at most one Lingo script associated with it, but we were running into movies in which a cast member seemingly had several scripts. There was no obvious way to deal with this - redefining the script usually led to incorrect behavior, and so did keeping the original definition."/>
+<script src="https://djsrv.github.io/js/feather.min.js"></script>
+	
+	<link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="https://djsrv.github.io/css/main.css" />
+</head><body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="https://djsrv.github.io/">Dylan Servilla</a>
+	</div>
+	<nav>
+		
+		<a href="/">Home</a>
+		
+		<a href="/scummvm">ScummVM</a>
+		
+	</nav>
+</header>
+
+<main>
+	<article>
+		<div class="title">
+			<h1 class="title">Learning the Lingo</h1>
+			<div class="meta">Posted on Jul 20, 2020</div>
+		</div>
+		
+
+		<section class="body">
+			<p>This week I worked out some longstanding Lingo issues!</p>
+<h2 id="duplicate-scripts">Duplicate Scripts</h2>
+<p>The first issue was duplicate scripts in Director 4 movies. Each cast member should have at most one Lingo script associated with it, but we were running into movies in which a cast member seemingly had several scripts. There was no obvious way to deal with this - redefining the script usually led to incorrect behavior, and so did keeping the original definition.</p>
+<p>These duplicate scripts were rare in most movies, so the problem went ignored for a while, but in our recently added target <em>Majestic Part 1: Alien Encounter</em>, there were several hundred scripts, and almost every one conflicted with another.</p>
+<p>Initially, I thought that there must be something that indicated certain scripts, or at least certain handlers within these scripts, were unused. The first place I investigated was the script&rsquo;s &ldquo;handler vectors.&rdquo; These differed between some of the duplicate scripts, and I thought they might hold the key to how the script conflicts should be handled.</p>
+<p>&ldquo;Handler vectors&rdquo; were identified as an array of 16-bit integers in <a href="https://docs.google.com/document/d/1jDBXE4Wv1AEga-o1Wi8xtlNZY4K2fHxW2Xs8RgARrqk/edit">Anthony Klein&rsquo;s Director documentation</a>, but there was no explanation of their purpose. I got in touch with Anthony, but he couldn&rsquo;t remember what they were for, and they remained a mystery to me for weeks. Once I began deeper investigation, it quickly became apparent that the &ldquo;handler vectors&rdquo; are just used to map event IDs to handler IDs. Totally unrelated.</p>
+<p>The next suspect was the Lingo context, a container which maps script IDs to script data:</p>
+<pre><code>Section LctX {
+	Struct header {
+		...
+		Uint16 [big] freePtr
+	}
+	...
+	Array scripts(count) {
+		Struct scriptLink {
+			Uint32 unknown
+			Uint32 [big] ID // use MMAP!
+			Uint16 [big] used // 0 : unused , 4: used
+			Uint12 [big] link // For unused entries: link to next unused, or -1.
+		}
+	}
+}
+</code></pre><p><a href="https://github.com/Earthquake-Project/Format-Documentation/blob/master/structure/scripting/FormatNotes_Scripts.txt">(Source: Brian151)</a></p>
+<p>The two areas of interest are:</p>
+<ol>
+<li>The script entry&rsquo;s <code>used</code> field</li>
+<li>A linked list of unused scripts, which begins at the script entry at index <code>freePtr</code>. The entry&rsquo;s <code>link</code> field gives the index of the next unused script, or -1.</li>
+</ol>
+<p>However, after much investigation, it seems that there is actually no difference in how a script with <code>used = 0</code> and a script with <code>used = 4</code> should be handled. The linked list does indeed indicate unused scripts, but all of the entries in the list seem to have an <code>ID</code> of -1. Thus, these unused scripts have no script data associated with them, and they were never being loaded in the first place. There was no way they could be causing conflicts, since they didn&rsquo;t really exist.</p>
+<p>To finally solve the mystery, I had to throw out what I thought I knew about how Lingo scripts are linked to cast members. For years, the Director reverse engineering community understood that:</p>
+<blockquote>
+<p>The scripts are not owned by their individual Cast Members in the Key Table [which links cast members to most of their assets] as you may expect. Instead, each Lingo Script has the number of its corresponding Cast Member <a href="https://docs.google.com/document/d/1jDBXE4Wv1AEga-o1Wi8xtlNZY4K2fHxW2Xs8RgARrqk/edit">(Source: Anthony Klein)</a>.</p>
+</blockquote>
+<p>After a few days of testing, I noticed that the cast member ID stored within Lingo scripts was sometimes incorrect. Or, as in <em>Majestic</em>, almost always incorrect. There had to be some other way by which cast members were linked to their scripts.</p>
+<p>The obvious place to look was in the cast member data, which is split into two parts - data specific to the cast member type, followed by largely standard cast member info. We had previously identified a <code>scriptId</code> field in the data specific to script cast members, and these IDs always seemed to be correct. However, other types of cast members could have scripts as well, and since they wouldn&rsquo;t have this field, this solution wouldn&rsquo;t work for them. Or so it seemed.</p>
+<p>Long story short, we were treating too many bytes as type-specific data, and the <code>scriptId</code> was actually in the standard cast member info. Once that was fixed, every cast member had a single, correct <code>scriptId</code> associated with it. Use that to link cast members to the scripts, and no more duplicate scripts!</p>
+<h2 id="grammar">Grammar</h2>
+<p>Next was improvements to the Lingo grammar.</p>
+<p>First, I needed to differentiate between statements and expressions. An expression by itself, like <code>2 + 2</code>, isn&rsquo;t a valid Lingo script - it needs to be an argument to a statement, like <code>put 2 + 2</code>. However, we were treating expressions and statements exactly the same, which allowed incorrect scripts and significantly complicated the grammar. Once this was fixed, half of the grammar&rsquo;s 441 conflicts were gone.</p>
+<p>Next, I needed to get rid of the differentiation between Lingo&rsquo;s subroutine types. Confusingly, Lingo has (at least) 3 different types, with overlapping purposes:</p>
+<ul>
+<li>Commands - These are built-in, and invoked by a call statement, like <code>foo()</code> or <code>foo</code>.</li>
+<li>Functions - These are also built-in, and invoked by a call expression, like <code>put foo()</code>. Very rarely, you can also invoke them as statements.</li>
+<li>Handlers - These are user-defined, and can be invoked by either call statements or call expressions.</li>
+</ul>
+<p>Now, these are separate things, but they should only be treated separately during execution. Previously we were differentiating them in the grammar, which again complicated things.</p>
+<p>With that done, I began general cleanup. Reorganizing things where conflicts could be eliminated, reducing the use of right recursion, and adding support for fun statements like this one:</p>
+<pre><code>put cast cast
+</code></pre><p>What should this do? Why, of course, it prints the cast member whose ID is equal to the variable <code>cast</code>:</p>
+<pre><code>set cast = 1
+put cast cast
+-- (cast 1)
+</code></pre><p>All in all, the grammar is now truer to the original, and we&rsquo;re down to 6 conflicts from 441!</p>
+
+		</section>
+
+		<div class="post-tags">
+			
+			
+			
+		</div>
+	</article>
+</main>
+<footer>
+<hr><a class="soc" href="https://github.com/djsrv" title="GitHub"><i data-feather="github"></i></a>|<a class="soc" href="/index.xml" title="RSS Feed"><i data-feather="rss"></i></a>|⚡️
+	2020  <a href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
+</footer>
+
+
+<script>
+      feather.replace()
+</script>
+
+</div>
+    </body>
+</html>
