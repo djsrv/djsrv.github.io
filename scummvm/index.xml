@@ -14,6 +14,26 @@
     
     
     <item>
+      <title>Events and Things</title>
+      <link>https://djsrv.github.io/scummvm/events-and-things/</link>
+      <pubDate>Mon, 27 Jul 2020 17:47:23 -0400</pubDate>
+      <author>dservilla@gmail.com (Dylan Servilla)</author>
+      <guid>https://djsrv.github.io/scummvm/events-and-things/</guid>
+      <description>&lt;p&gt;I spent last week fixing more Lingo issues, mostly event related:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Previously, event processing didn&amp;rsquo;t take into account the fact that multiple movies could be running at the same time, as it was implemented before MIAWs. Events were handled by whatever movie was currently being stepped, even if the event should&amp;rsquo;ve gone to another movie. I refactored the event handling code, and that&amp;rsquo;s been fixed.&lt;/li&gt;
+&lt;li&gt;I made the Lingo interpreter pause every 100 operations to process events, preventing long Lingo scripts from blocking mouse position updates and quit events.&lt;/li&gt;
+&lt;li&gt;I changed menu item callbacks to use the event system, whereas before they just haphazardly created and called global functions.&lt;/li&gt;
+&lt;li&gt;I modified the Lingo interpreter so that handlers whose return values aren&amp;rsquo;t used don&amp;rsquo;t leave garbage on the stack.&lt;/li&gt;
+&lt;li&gt;Lots of small bug fixes, and a few Lingo features like &lt;code&gt;the title of window&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Nothing I did last week is particularly interesting to look at, so here&amp;rsquo;s a bug in &lt;em&gt;Chop Suey&lt;/em&gt; I fixed today:
+&lt;img src=&#34;https://djsrv.github.io/img/mudpup.png&#34; alt=&#34;Mud Pup wearing assorted clothes&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Before, you couldn&amp;rsquo;t put clothes on the dog. Now, you can put clothes on the dog. Problem solved. :)&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Learning the Lingo</title>
       <link>https://djsrv.github.io/scummvm/learning-the-lingo/</link>
       <pubDate>Mon, 20 Jul 2020 23:34:57 -0400</pubDate>

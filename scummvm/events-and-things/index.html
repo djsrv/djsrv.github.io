@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html><head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Events and Things - Dylan Servilla</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="Events and Things" />
+<meta property="og:description" content="I spent last week fixing more Lingo issues, mostly event related:
+ Previously, event processing didn&rsquo;t take into account the fact that multiple movies could be running at the same time, as it was implemented before MIAWs. Events were handled by whatever movie was currently being stepped, even if the event should&rsquo;ve gone to another movie. I refactored the event handling code, and that&rsquo;s been fixed. I made the Lingo interpreter pause every 100 operations to process events, preventing long Lingo scripts from blocking mouse position updates and quit events." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://djsrv.github.io/scummvm/events-and-things/" />
+<meta property="article:published_time" content="2020-07-27T17:47:23-04:00" />
+<meta property="article:modified_time" content="2020-07-27T17:47:23-04:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Events and Things"/>
+<meta name="twitter:description" content="I spent last week fixing more Lingo issues, mostly event related:
+ Previously, event processing didn&rsquo;t take into account the fact that multiple movies could be running at the same time, as it was implemented before MIAWs. Events were handled by whatever movie was currently being stepped, even if the event should&rsquo;ve gone to another movie. I refactored the event handling code, and that&rsquo;s been fixed. I made the Lingo interpreter pause every 100 operations to process events, preventing long Lingo scripts from blocking mouse position updates and quit events."/>
+<script src="https://djsrv.github.io/js/feather.min.js"></script>
+	
+	<link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="https://djsrv.github.io/css/main.css" />
+</head><body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="https://djsrv.github.io/">Dylan Servilla</a>
+	</div>
+	<nav>
+		
+		<a href="/">Home</a>
+		
+		<a href="/scummvm">ScummVM</a>
+		
+	</nav>
+</header>
+
+<main>
+	<article>
+		<div class="title">
+			<h1 class="title">Events and Things</h1>
+			<div class="meta">Posted on Jul 27, 2020</div>
+		</div>
+		
+
+		<section class="body">
+			<p>I spent last week fixing more Lingo issues, mostly event related:</p>
+<ul>
+<li>Previously, event processing didn&rsquo;t take into account the fact that multiple movies could be running at the same time, as it was implemented before MIAWs. Events were handled by whatever movie was currently being stepped, even if the event should&rsquo;ve gone to another movie. I refactored the event handling code, and that&rsquo;s been fixed.</li>
+<li>I made the Lingo interpreter pause every 100 operations to process events, preventing long Lingo scripts from blocking mouse position updates and quit events.</li>
+<li>I changed menu item callbacks to use the event system, whereas before they just haphazardly created and called global functions.</li>
+<li>I modified the Lingo interpreter so that handlers whose return values aren&rsquo;t used don&rsquo;t leave garbage on the stack.</li>
+<li>Lots of small bug fixes, and a few Lingo features like <code>the title of window</code></li>
+</ul>
+<p>Nothing I did last week is particularly interesting to look at, so here&rsquo;s a bug in <em>Chop Suey</em> I fixed today:
+<img src="/img/mudpup.png" alt="Mud Pup wearing assorted clothes"></p>
+<p>Before, you couldn&rsquo;t put clothes on the dog. Now, you can put clothes on the dog. Problem solved. :)</p>
+
+		</section>
+
+		<div class="post-tags">
+			
+			
+			
+		</div>
+	</article>
+</main>
+<footer>
+<hr><a class="soc" href="https://github.com/djsrv" title="GitHub"><i data-feather="github"></i></a>|<a class="soc" href="/index.xml" title="RSS Feed"><i data-feather="rss"></i></a>|⚡️
+	2020  <a href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
+</footer>
+
+
+<script>
+      feather.replace()
+</script>
+
+</div>
+    </body>
+</html>
