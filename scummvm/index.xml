@@ -14,6 +14,21 @@
     
     
     <item>
+      <title>A Branded Desktop</title>
+      <link>https://djsrv.github.io/scummvm/a-branded-desktop/</link>
+      <pubDate>Mon, 03 Aug 2020 18:39:50 -0400</pubDate>
+      <author>dservilla@gmail.com (Dylan Servilla)</author>
+      <guid>https://djsrv.github.io/scummvm/a-branded-desktop/</guid>
+      <description>&lt;p&gt;It&amp;rsquo;s been a hectic week since I attended two online conferences going on at the same time, and I had to prepare a talk for one of them, but I still have some exciting progress to share!&lt;/p&gt;
+&lt;p&gt;This week I got desktop/window border textures working, so the environment surrounding the Director movies looks closer to how it would have back in the day. Though the ScummVM branding would&amp;rsquo;ve been Mac OS branding, of course.
+&lt;img src=&#34;https://djsrv.github.io/img/desktop.png&#34; alt=&#34;Desktop with Mac OS style windows and a ScummVM desktop background&#34;&gt;&lt;/p&gt;
+&lt;p&gt;This was a real pain to get to, since I needed to make all these textures myself, and our MacWindowManager&amp;rsquo;s hard-coded defaults never work quite right for the Director engine&amp;rsquo;s use cases. But now it (mostly) works. I just need to fix up a few bugs and rewrite the desktop background code to make it more efficient.&lt;/p&gt;
+&lt;p&gt;On Friday, we met with John Henry Thomspon, the inventor of Lingo, to show off this and our other progress. It&amp;rsquo;s always nice to hear the thoughts of such an important Director developer. :)&lt;/p&gt;
+&lt;p&gt;I also rewrote my Lingo decompiler, &lt;a href=&#34;https://github.com/Earthquake-Project/ProjectorRays&#34;&gt;ProjectorRays&lt;/a&gt;, in C++ so that it can more easily share code with ScummVM, and I&amp;rsquo;m working to bring it in line with the Lingo discoveries we&amp;rsquo;ve made while working on the Director engine. I just got it working on Director 4 movies! The output for these older movies isn&amp;rsquo;t great yet, but that will quickly change.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Events and Things</title>
       <link>https://djsrv.github.io/scummvm/events-and-things/</link>
       <pubDate>Mon, 27 Jul 2020 17:47:23 -0400</pubDate>

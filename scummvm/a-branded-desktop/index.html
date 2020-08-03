@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html><head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>A Branded Desktop - Dylan Servilla</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="A Branded Desktop" />
+<meta property="og:description" content="It&rsquo;s been a hectic week since I attended two online conferences going on at the same time, and I had to prepare a talk for one of them, but I still have some exciting progress to share!
+This week I got desktop/window border textures working, so the environment surrounding the Director movies looks closer to how it would have back in the day. Though the ScummVM branding would&rsquo;ve been Mac OS branding, of course." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://djsrv.github.io/scummvm/a-branded-desktop/" />
+<meta property="article:published_time" content="2020-08-03T18:39:50-04:00" />
+<meta property="article:modified_time" content="2020-08-03T18:39:50-04:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="A Branded Desktop"/>
+<meta name="twitter:description" content="It&rsquo;s been a hectic week since I attended two online conferences going on at the same time, and I had to prepare a talk for one of them, but I still have some exciting progress to share!
+This week I got desktop/window border textures working, so the environment surrounding the Director movies looks closer to how it would have back in the day. Though the ScummVM branding would&rsquo;ve been Mac OS branding, of course."/>
+<script src="https://djsrv.github.io/js/feather.min.js"></script>
+	
+	<link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="https://djsrv.github.io/css/main.css" />
+</head><body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="https://djsrv.github.io/">Dylan Servilla</a>
+	</div>
+	<nav>
+		
+		<a href="/">Home</a>
+		
+		<a href="/scummvm">ScummVM</a>
+		
+	</nav>
+</header>
+
+<main>
+	<article>
+		<div class="title">
+			<h1 class="title">A Branded Desktop</h1>
+			<div class="meta">Posted on Aug 3, 2020</div>
+		</div>
+		
+
+		<section class="body">
+			<p>It&rsquo;s been a hectic week since I attended two online conferences going on at the same time, and I had to prepare a talk for one of them, but I still have some exciting progress to share!</p>
+<p>This week I got desktop/window border textures working, so the environment surrounding the Director movies looks closer to how it would have back in the day. Though the ScummVM branding would&rsquo;ve been Mac OS branding, of course.
+<img src="/img/desktop.png" alt="Desktop with Mac OS style windows and a ScummVM desktop background"></p>
+<p>This was a real pain to get to, since I needed to make all these textures myself, and our MacWindowManager&rsquo;s hard-coded defaults never work quite right for the Director engine&rsquo;s use cases. But now it (mostly) works. I just need to fix up a few bugs and rewrite the desktop background code to make it more efficient.</p>
+<p>On Friday, we met with John Henry Thomspon, the inventor of Lingo, to show off this and our other progress. It&rsquo;s always nice to hear the thoughts of such an important Director developer. :)</p>
+<p>I also rewrote my Lingo decompiler, <a href="https://github.com/Earthquake-Project/ProjectorRays">ProjectorRays</a>, in C++ so that it can more easily share code with ScummVM, and I&rsquo;m working to bring it in line with the Lingo discoveries we&rsquo;ve made while working on the Director engine. I just got it working on Director 4 movies! The output for these older movies isn&rsquo;t great yet, but that will quickly change.</p>
+
+		</section>
+
+		<div class="post-tags">
+			
+			
+			
+		</div>
+	</article>
+</main>
+<footer>
+<hr><a class="soc" href="https://github.com/djsrv" title="GitHub"><i data-feather="github"></i></a>|<a class="soc" href="/index.xml" title="RSS Feed"><i data-feather="rss"></i></a>|⚡️
+	2020  <a href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
+</footer>
+
+
+<script>
+      feather.replace()
+</script>
+
+</div>
+    </body>
+</html>
