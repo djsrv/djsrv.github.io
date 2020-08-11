@@ -14,6 +14,25 @@
     
     
     <item>
+      <title>Fixup</title>
+      <link>https://djsrv.github.io/scummvm/fixup/</link>
+      <pubDate>Mon, 10 Aug 2020 21:06:46 -0400</pubDate>
+      <author>dservilla@gmail.com (Dylan Servilla)</author>
+      <guid>https://djsrv.github.io/scummvm/fixup/</guid>
+      <description>&lt;p&gt;This last week I largely worked my way through my backed up Trello cards, as well as fixing Buildbot failures and various issues with movies in windows.&lt;/p&gt;
+&lt;p&gt;Some highlights from bug hunting:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Director movies contain a Lingo names table (&lt;code&gt;Lnam&lt;/code&gt;) which, as the name implies, stores the names of functions, variables, etc. Previously, we were just loading the name table which had the highest ID, and thus should usually be the newest. This worked pretty much all the time. However, one target, Lingo Expo&amp;rsquo;s Noh Tale, was absolutely full of unnamed functions, and I had long been confused why this was happening. Inexplicably, the highest name table turned out to be the wrong one in this just this single movie, and this was fixed by loading the correct name table specified in the Lingo context (&lt;code&gt;Lctx&lt;/code&gt;).&lt;/li&gt;
+&lt;li&gt;Now, Noh Tale seemed to work fine, but it inexplicably still failed in the Buildbot, timing out after 20 seconds. After some testing, it became apparent that the problem was the movie&amp;rsquo;s use of the &amp;ldquo;wait for click&amp;rdquo; tempo, one of the few features implemented with a busy loop. Normally, a movie running in the Buildbot would be killed after the movie was stepped a few times, but this busy loop kept it trapped in the step function forever, waiting for a click which would never come. This also blocked any movies in windows running at the same time, so I had to replace the busy loop.&lt;/li&gt;
+&lt;li&gt;Next was Bingo.dir from Chop Suey, another movie which seemed to work fine but failed in the Buildbot. Here, the problem was that the movie was being terminated in the middle of a script, and then a &lt;code&gt;stopMovie&lt;/code&gt; event handler was triggered. It turned out that this event handler relied on the results of the prematurely terminated script, and preventing the &lt;code&gt;stopMovie&lt;/code&gt; handler from running in the first place solved this.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;After more MacGUI cleanup, windows look even closer to how they did on a real Mac, with proper title rendering, transparency, inactive window coloring, and a desktop background that doesn&amp;rsquo;t cause ScummVM to lag. Not to mention quite a few other rendering fixes:
+&lt;img src=&#34;https://djsrv.github.io/img/windowType.png&#34; alt=&#34;A screenshot of windowType 9&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Over the weekend, I continued work on &lt;a href=&#34;https://github.com/Earthquake-Project/ProjectorRays&#34;&gt;ProjectorRays&lt;/a&gt;, and it can now detect a movie&amp;rsquo;s Director version, load a movie&amp;rsquo;s casts, and link scripts to cast members so that they can be identified by name. These features were blocking lots of improvements, and I should be able to make progress on Lingo decompilation much faster now. The code will also be easy to reuse in ScummVM—I just copied over the version detection code today. :)&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>A Branded Desktop</title>
       <link>https://djsrv.github.io/scummvm/a-branded-desktop/</link>
       <pubDate>Mon, 03 Aug 2020 18:39:50 -0400</pubDate>

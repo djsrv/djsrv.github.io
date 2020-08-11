@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html><head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Fixup - Dylan Servilla</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="Fixup" />
+<meta property="og:description" content="This last week I largely worked my way through my backed up Trello cards, as well as fixing Buildbot failures and various issues with movies in windows.
+Some highlights from bug hunting:
+ Director movies contain a Lingo names table (Lnam) which, as the name implies, stores the names of functions, variables, etc. Previously, we were just loading the name table which had the highest ID, and thus should usually be the newest." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://djsrv.github.io/scummvm/fixup/" />
+<meta property="article:published_time" content="2020-08-10T21:06:46-04:00" />
+<meta property="article:modified_time" content="2020-08-10T21:06:46-04:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Fixup"/>
+<meta name="twitter:description" content="This last week I largely worked my way through my backed up Trello cards, as well as fixing Buildbot failures and various issues with movies in windows.
+Some highlights from bug hunting:
+ Director movies contain a Lingo names table (Lnam) which, as the name implies, stores the names of functions, variables, etc. Previously, we were just loading the name table which had the highest ID, and thus should usually be the newest."/>
+<script src="https://djsrv.github.io/js/feather.min.js"></script>
+	
+	<link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="https://djsrv.github.io/css/main.css" />
+</head><body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="https://djsrv.github.io/">Dylan Servilla</a>
+	</div>
+	<nav>
+		
+		<a href="/">Home</a>
+		
+		<a href="/scummvm">ScummVM</a>
+		
+	</nav>
+</header>
+
+<main>
+	<article>
+		<div class="title">
+			<h1 class="title">Fixup</h1>
+			<div class="meta">Posted on Aug 10, 2020</div>
+		</div>
+		
+
+		<section class="body">
+			<p>This last week I largely worked my way through my backed up Trello cards, as well as fixing Buildbot failures and various issues with movies in windows.</p>
+<p>Some highlights from bug hunting:</p>
+<ul>
+<li>Director movies contain a Lingo names table (<code>Lnam</code>) which, as the name implies, stores the names of functions, variables, etc. Previously, we were just loading the name table which had the highest ID, and thus should usually be the newest. This worked pretty much all the time. However, one target, Lingo Expo&rsquo;s Noh Tale, was absolutely full of unnamed functions, and I had long been confused why this was happening. Inexplicably, the highest name table turned out to be the wrong one in this just this single movie, and this was fixed by loading the correct name table specified in the Lingo context (<code>Lctx</code>).</li>
+<li>Now, Noh Tale seemed to work fine, but it inexplicably still failed in the Buildbot, timing out after 20 seconds. After some testing, it became apparent that the problem was the movie&rsquo;s use of the &ldquo;wait for click&rdquo; tempo, one of the few features implemented with a busy loop. Normally, a movie running in the Buildbot would be killed after the movie was stepped a few times, but this busy loop kept it trapped in the step function forever, waiting for a click which would never come. This also blocked any movies in windows running at the same time, so I had to replace the busy loop.</li>
+<li>Next was Bingo.dir from Chop Suey, another movie which seemed to work fine but failed in the Buildbot. Here, the problem was that the movie was being terminated in the middle of a script, and then a <code>stopMovie</code> event handler was triggered. It turned out that this event handler relied on the results of the prematurely terminated script, and preventing the <code>stopMovie</code> handler from running in the first place solved this.</li>
+</ul>
+<p>After more MacGUI cleanup, windows look even closer to how they did on a real Mac, with proper title rendering, transparency, inactive window coloring, and a desktop background that doesn&rsquo;t cause ScummVM to lag. Not to mention quite a few other rendering fixes:
+<img src="/img/windowType.png" alt="A screenshot of windowType 9"></p>
+<p>Over the weekend, I continued work on <a href="https://github.com/Earthquake-Project/ProjectorRays">ProjectorRays</a>, and it can now detect a movie&rsquo;s Director version, load a movie&rsquo;s casts, and link scripts to cast members so that they can be identified by name. These features were blocking lots of improvements, and I should be able to make progress on Lingo decompilation much faster now. The code will also be easy to reuse in ScummVM—I just copied over the version detection code today. :)</p>
+
+		</section>
+
+		<div class="post-tags">
+			
+			
+			
+		</div>
+	</article>
+</main>
+<footer>
+<hr><a class="soc" href="https://github.com/djsrv" title="GitHub"><i data-feather="github"></i></a>|<a class="soc" href="/index.xml" title="RSS Feed"><i data-feather="rss"></i></a>|⚡️
+	2020  <a href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
+</footer>
+
+
+<script>
+      feather.replace()
+</script>
+
+</div>
+    </body>
+</html>
