@@ -14,6 +14,21 @@
     
     
     <item>
+      <title>Shockwave!</title>
+      <link>https://djsrv.github.io/scummvm/shockwave/</link>
+      <pubDate>Mon, 17 Aug 2020 23:41:15 -0400</pubDate>
+      <author>dservilla@gmail.com (Dylan Servilla)</author>
+      <guid>https://djsrv.github.io/scummvm/shockwave/</guid>
+      <description>&lt;p&gt;Last week was an exciting one because the Director engine can finally load Macromedia Shockwave 1.0 movies!&lt;/p&gt;
+&lt;p&gt;This first version of Shockwave was based on Director 4.0, which we already have partial support for, and it used a &amp;ldquo;afterburned&amp;rdquo; movie format with a modified memory map and zlib compression. After implementing support for this file format, the Director engine can now load (and sort of play) early Shockwave games:
+&lt;img src=&#34;https://djsrv.github.io/img/shockwave-asteroids.png&#34; alt=&#34;A Shockwave asteroids game&#34;&gt;&lt;/p&gt;
+&lt;p&gt;None of the games I&amp;rsquo;ve tested work very well yet due to missing Director features, but I&amp;rsquo;m hoping that some Shockwave games will be fully playable soon, as they&amp;rsquo;re often small and rather simple.&lt;/p&gt;
+&lt;p&gt;In addition, I&amp;rsquo;ve refactored cast members so that they are Lingo objects, greatly simplifying the implementation of cast member properties. The properties a cast member has depends on its type, and this is now implemented with inheritance and polymorphism instead of a huge switch statement with copious type checks.&lt;/p&gt;
+&lt;p&gt;More types to follow! :)&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Fixup</title>
       <link>https://djsrv.github.io/scummvm/fixup/</link>
       <pubDate>Mon, 10 Aug 2020 21:06:46 -0400</pubDate>
