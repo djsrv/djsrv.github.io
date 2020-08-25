@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html><head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Wrapping up the Summer - Dylan Servilla</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta property="og:title" content="Wrapping up the Summer" />
+<meta property="og:description" content="Summer&rsquo;s drawing to a close, and the school year is about to begin. Before that happens, I&rsquo;m trying to squeeze in a few more tasks: exposing more Director features as Lingo objects, fully implementing chunk expressions, and cleaning up the implementations of Director 4 Lingo instructions.
+One of the ways I&rsquo;ve tried to make the D4 instructions cleaner is by reducing code duplication. First, I cut down the size of cb_objectcall by reusing functionality in the generic call." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://djsrv.github.io/scummvm/wrapping-up-summer/" />
+<meta property="article:published_time" content="2020-08-24T23:13:10-04:00" />
+<meta property="article:modified_time" content="2020-08-24T23:13:10-04:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Wrapping up the Summer"/>
+<meta name="twitter:description" content="Summer&rsquo;s drawing to a close, and the school year is about to begin. Before that happens, I&rsquo;m trying to squeeze in a few more tasks: exposing more Director features as Lingo objects, fully implementing chunk expressions, and cleaning up the implementations of Director 4 Lingo instructions.
+One of the ways I&rsquo;ve tried to make the D4 instructions cleaner is by reducing code duplication. First, I cut down the size of cb_objectcall by reusing functionality in the generic call."/>
+<script src="https://djsrv.github.io/js/feather.min.js"></script>
+	
+	<link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" media="screen" href="https://djsrv.github.io/css/main.css" />
+</head><body>
+        <div class="content"><header>
+	<div class="main">
+		<a href="https://djsrv.github.io/">Dylan Servilla</a>
+	</div>
+	<nav>
+		
+		<a href="/">Home</a>
+		
+		<a href="/scummvm">ScummVM</a>
+		
+	</nav>
+</header>
+
+<main>
+	<article>
+		<div class="title">
+			<h1 class="title">Wrapping up the Summer</h1>
+			<div class="meta">Posted on Aug 24, 2020</div>
+		</div>
+		
+
+		<section class="body">
+			<p>Summer&rsquo;s drawing to a close, and the school year is about to begin. Before that happens, I&rsquo;m trying to squeeze in a few more tasks: exposing more Director features as Lingo objects, fully implementing chunk expressions, and cleaning up the implementations of Director 4 Lingo instructions.</p>
+<p>One of the ways I&rsquo;ve tried to make the D4 instructions cleaner is by reducing code duplication. First, I cut down the size of <code>cb_objectcall</code> by reusing functionality in the generic <code>call</code>. Then, I noticed that several variable-related instructions take a variable type argument, but none of the instructions handled every variable type correctly. After identifying the IDs for every type I could, I combined all this duplicated variable lookup code into a single helper function.</p>
+<p>I also implemented Lingo errors, allowing for easier detection of illegal cases, which often indicate a mistake on our part.</p>
+<p>Then, I began implementing better support of chunk expressions. Chunk expressions are references to substrings, such as <code>word 2 to 4 of &quot;the quick brown fox&quot;</code>. You can use them to grab text:</p>
+<pre><code>set x to word 2 to 4 of &quot;the quick brown fox&quot;`
+</code></pre><p>or you can use them manipulate the text:</p>
+<pre><code>put &quot; foo&quot; after word 2 of x
+</code></pre><p>Previously, we only supported the former, and I&rsquo;m in the process of implementing support for the latter.</p>
+<p>Since summer&rsquo;s almost over, I&rsquo;d like to thank the ScummVM developers, especially sev, rvanlaar, and moralrecordings, as well as Google for its Summer of Code program. I&rsquo;ve learned a lot and had a good deal of fun over the past three months.</p>
+<p>I won&rsquo;t be working on ScummVM full-time anymore, but this definitely won&rsquo;t be the last you hear from me. We still have plenty of work to do on Director, and I plan to keep contributing in my spare time.</p>
+<p>See you soon!</p>
+
+		</section>
+
+		<div class="post-tags">
+			
+			
+			
+		</div>
+	</article>
+</main>
+<footer>
+<hr><a class="soc" href="https://github.com/djsrv" title="GitHub"><i data-feather="github"></i></a>|<a class="soc" href="/index.xml" title="RSS Feed"><i data-feather="rss"></i></a>|⚡️
+	2020  <a href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
+</footer>
+
+
+<script>
+      feather.replace()
+</script>
+
+</div>
+    </body>
+</html>

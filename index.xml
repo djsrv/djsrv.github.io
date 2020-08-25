@@ -8,10 +8,30 @@
     <language>en-us</language>
     <managingEditor>dservilla@gmail.com (Dylan Servilla)</managingEditor>
     <webMaster>dservilla@gmail.com (Dylan Servilla)</webMaster>
-    <lastBuildDate>Mon, 17 Aug 2020 23:41:15 -0400</lastBuildDate>
+    <lastBuildDate>Mon, 24 Aug 2020 23:13:10 -0400</lastBuildDate>
     
 	<atom:link href="https://djsrv.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Wrapping up the Summer</title>
+      <link>https://djsrv.github.io/scummvm/wrapping-up-summer/</link>
+      <pubDate>Mon, 24 Aug 2020 23:13:10 -0400</pubDate>
+      <author>dservilla@gmail.com (Dylan Servilla)</author>
+      <guid>https://djsrv.github.io/scummvm/wrapping-up-summer/</guid>
+      <description>&lt;p&gt;Summer&amp;rsquo;s drawing to a close, and the school year is about to begin. Before that happens, I&amp;rsquo;m trying to squeeze in a few more tasks: exposing more Director features as Lingo objects, fully implementing chunk expressions, and cleaning up the implementations of Director 4 Lingo instructions.&lt;/p&gt;
+&lt;p&gt;One of the ways I&amp;rsquo;ve tried to make the D4 instructions cleaner is by reducing code duplication. First, I cut down the size of &lt;code&gt;cb_objectcall&lt;/code&gt; by reusing functionality in the generic &lt;code&gt;call&lt;/code&gt;. Then, I noticed that several variable-related instructions take a variable type argument, but none of the instructions handled every variable type correctly. After identifying the IDs for every type I could, I combined all this duplicated variable lookup code into a single helper function.&lt;/p&gt;
+&lt;p&gt;I also implemented Lingo errors, allowing for easier detection of illegal cases, which often indicate a mistake on our part.&lt;/p&gt;
+&lt;p&gt;Then, I began implementing better support of chunk expressions. Chunk expressions are references to substrings, such as &lt;code&gt;word 2 to 4 of &amp;quot;the quick brown fox&amp;quot;&lt;/code&gt;. You can use them to grab text:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;set x to word 2 to 4 of &amp;quot;the quick brown fox&amp;quot;`
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;or you can use them manipulate the text:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;put &amp;quot; foo&amp;quot; after word 2 of x
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Previously, we only supported the former, and I&amp;rsquo;m in the process of implementing support for the latter.&lt;/p&gt;
+&lt;p&gt;Since summer&amp;rsquo;s almost over, I&amp;rsquo;d like to thank the ScummVM developers, especially sev, rvanlaar, and moralrecordings, as well as Google for its Summer of Code program. I&amp;rsquo;ve learned a lot and had a good deal of fun over the past three months.&lt;/p&gt;
+&lt;p&gt;I won&amp;rsquo;t be working on ScummVM full-time anymore, but this definitely won&amp;rsquo;t be the last you hear from me. We still have plenty of work to do on Director, and I plan to keep contributing in my spare time.&lt;/p&gt;
+&lt;p&gt;See you soon!&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Shockwave!</title>
