@@ -21,7 +21,7 @@
       <guid>https://djsrv.github.io/scummvm/gsoc-summary/</guid>
       <description>&lt;p&gt;Over the past few months I&amp;rsquo;ve made 451 commits to the main ScummVM repository, largely in the Macromedia Director and MacGUI subsystems:&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://djsrv.github.io/img/scummvm-commits.png&#34; alt=&#34;451 commits to ScummVM&#34;&gt;&lt;/p&gt;
-&lt;p&gt;Most of this work was focused on the reimplementation of Lingo, Director&amp;rsquo;s programming language, so that Director games can be played in ScummVM. &lt;a href=&#34;https://github.com/scummvm/scummvm/commits?author=djsrv&#34;&gt;You can find every commit here&lt;/a&gt;, but this is the overview:&lt;/p&gt;
+&lt;p&gt;Most of this work was focused on the reimplementation of Lingo, Director&amp;rsquo;s programming language, so that Director games can be played in ScummVM. &lt;a href=&#34;https://github.com/scummvm/scummvm/commits/branch-2-2?author=djsrv&#34;&gt;You can find every commit here&lt;/a&gt;, but this is the overview:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;I did extensive work on Lingo objects;
 &lt;ul&gt;
