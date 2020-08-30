@@ -14,6 +14,50 @@
     
     
     <item>
+      <title>Google Summer of Code Summary</title>
+      <link>https://djsrv.github.io/scummvm/gsoc-summary/</link>
+      <pubDate>Sun, 30 Aug 2020 15:37:02 -0400</pubDate>
+      <author>dservilla@gmail.com (Dylan Servilla)</author>
+      <guid>https://djsrv.github.io/scummvm/gsoc-summary/</guid>
+      <description>&lt;p&gt;Over the past few months I&amp;rsquo;ve made 451 commits to the main ScummVM repository, largely in the Macromedia Director and MacGUI subsystems:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://djsrv.github.io/img/scummvm-commits.png&#34; alt=&#34;451 commits to ScummVM&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Most of this work was focused on the reimplementation of Lingo, Director&amp;rsquo;s programming language, so that Director games can be played in ScummVM. &lt;a href=&#34;https://github.com/scummvm/scummvm/commits?author=djsrv&#34;&gt;You can find every commit here&lt;/a&gt;, but this is the overview:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;I did extensive work on Lingo objects;
+&lt;ul&gt;
+&lt;li&gt;I implemented &lt;a href=&#34;https://djsrv.github.io/scummvm/charlie-and-the-object-factory/&#34;&gt;factories&lt;/a&gt;, Lingo&amp;rsquo;s first iteration of objects.&lt;/li&gt;
+&lt;li&gt;I wrote a simple framework for XObjects (external objects). I started by implementing the &lt;a href=&#34;https://djsrv.github.io/scummvm/fileio-fun/&#34;&gt;FileIO&lt;/a&gt; XObject, and several XObjects have now been implemented by other contributors.&lt;/li&gt;
+&lt;li&gt;I implemented &lt;a href=&#34;https://djsrv.github.io/scummvm/back-to-bytecode/&#34;&gt;parent/child scripts&lt;/a&gt;, the successor to factories.&lt;/li&gt;
+&lt;li&gt;I wrote a template that allows any class to expose Lingo properties and methods, now used on scripts, windows, and cast members.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;I did extensive work to make our Lingo implementation more robust, including:
+&lt;ul&gt;
+&lt;li&gt;Refactoring the grammar, reducing its hundreds of conflicts to just a handful&lt;/li&gt;
+&lt;li&gt;Properly differentiating between commands and functions&lt;/li&gt;
+&lt;li&gt;Implementing Lingo errors&lt;/li&gt;
+&lt;li&gt;Lots of bug fixing&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;I improved reading Director movies from file:
+&lt;ul&gt;
+&lt;li&gt;I identified and wrote code to handle quite a few previously understudied parts of the file format.&lt;/li&gt;
+&lt;li&gt;I implemented a reader for Macintosh sound resources.&lt;/li&gt;
+&lt;li&gt;I added support for loading &lt;a href=&#34;https://djsrv.github.io/scummvm/shockwave/&#34;&gt;Shockwave movies&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;I implemented many minor Lingo features.&lt;/li&gt;
+&lt;li&gt;I rewrote the Lingo event system so that events are correctly ordered and delegated across multiple concurrent movies.&lt;/li&gt;
+&lt;li&gt;I refactored the monolithic Score class into a Movie, a Score, and a Cast, making the engine more faithful to Director and improving maintainability.&lt;/li&gt;
+&lt;li&gt;I implemented &lt;a href=&#34;https://djsrv.github.io/scummvm/miaws/&#34;&gt;Movies In A Window&lt;/a&gt; (MIAWs), adding support for multiple concurrent movies.&lt;/li&gt;
+&lt;li&gt;I recreated the looks of the &lt;a href=&#34;https://djsrv.github.io/scummvm/a-branded-desktop/&#34;&gt;Mac System 7 desktop&lt;/a&gt; to go with MIAWs.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;With the work I&amp;rsquo;ve done this summer, in combination with the other team members&amp;rsquo; efforts, the Director engine is much more robust and has a greatly enhanced feature set. It can run a decent subset of Director 2-4 movies, but there is still plenty of work to be done to ensure feature completeness and to support later versions. I plan to stick around to help with this.&lt;/p&gt;
+&lt;p&gt;In addition, while my hope of full support of a real Director game has not yet been realized, I&amp;rsquo;ve helped to lay the foundations for that. With the foundational elements of Director and Lingo in place, if a bit more love is given to some individual games, full support should be easily attainable.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>Wrapping up the Summer</title>
       <link>https://djsrv.github.io/scummvm/wrapping-up-summer/</link>
       <pubDate>Mon, 24 Aug 2020 23:13:10 -0400</pubDate>
