@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html><head>
 	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Learning the Lingo - Dylan Servilla</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Learning the Lingo - Deborah Servilla</title><meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta property="og:title" content="Learning the Lingo" />
 <meta property="og:description" content="This week I worked out some longstanding Lingo issues!
 Duplicate Scripts The first issue was duplicate scripts in Director 4 movies. Each cast member should have at most one Lingo script associated with it, but we were running into movies in which a cast member seemingly had several scripts. There was no obvious way to deal with this - redefining the script usually led to incorrect behavior, and so did keeping the original definition." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://djsrv.github.io/scummvm/learning-the-lingo/" />
+<meta property="og:url" content="https://djsrv.github.io/scummvm/learning-the-lingo/" /><meta property="article:section" content="scummvm" />
 <meta property="article:published_time" content="2020-07-20T23:34:57-04:00" />
 <meta property="article:modified_time" content="2020-07-20T23:34:57-04:00" />
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Learning the Lingo"/>
 <meta name="twitter:description" content="This week I worked out some longstanding Lingo issues!
@@ -21,7 +22,7 @@ Duplicate Scripts The first issue was duplicate scripts in Director 4 movies. Ea
 </head><body>
         <div class="content"><header>
 	<div class="main">
-		<a href="https://djsrv.github.io/">Dylan Servilla</a>
+		<a href="https://djsrv.github.io/">Deborah Servilla</a>
 	</div>
 	<nav>
 		
@@ -48,7 +49,7 @@ Duplicate Scripts The first issue was duplicate scripts in Director 4 movies. Ea
 <p>Initially, I thought that there must be something that indicated certain scripts, or at least certain handlers within these scripts, were unused. The first place I investigated was the script&rsquo;s &ldquo;handler vectors.&rdquo; These differed between some of the duplicate scripts, and I thought they might hold the key to how the script conflicts should be handled.</p>
 <p>&ldquo;Handler vectors&rdquo; were identified as an array of 16-bit integers in <a href="https://docs.google.com/document/d/1jDBXE4Wv1AEga-o1Wi8xtlNZY4K2fHxW2Xs8RgARrqk/edit">Anthony Kleine&rsquo;s Director documentation</a>, but there was no explanation of their purpose. I got in touch with Anthony, but he couldn&rsquo;t remember what they were for, and they remained a mystery to me for weeks. Once I began deeper investigation, it quickly became apparent that the &ldquo;handler vectors&rdquo; are just used to map event IDs to handler IDs. Totally unrelated.</p>
 <p>The next suspect was the Lingo context, a container which maps script IDs to script data:</p>
-<pre><code>Section LctX {
+<pre tabindex="0"><code>Section LctX {
 	Struct header {
 		...
 		Uint16 [big] freePtr
@@ -88,9 +89,9 @@ Duplicate Scripts The first issue was duplicate scripts in Director 4 movies. Ea
 </ul>
 <p>Now, these are separate things, but they should only be treated separately during execution. Previously we were differentiating them in the grammar, which again complicated things.</p>
 <p>With that done, I began general cleanup. Reorganizing things where conflicts could be eliminated, reducing the use of right recursion, and adding support for fun statements like this one:</p>
-<pre><code>put cast cast
+<pre tabindex="0"><code>put cast cast
 </code></pre><p>What should this do? Why, of course, it prints the cast member whose ID is equal to the variable <code>cast</code>:</p>
-<pre><code>set cast = 1
+<pre tabindex="0"><code>set cast = 1
 put cast cast
 -- (cast 1)
 </code></pre><p>All in all, the grammar is now truer to the original, and we&rsquo;re down to 6 conflicts from 441!</p>
@@ -106,7 +107,7 @@ put cast cast
 </main>
 <footer>
 <hr><a class="soc" href="https://github.com/djsrv" title="GitHub"><i data-feather="github"></i></a>|<a class="soc" href="/index.xml" title="RSS Feed"><i data-feather="rss"></i></a>|⚡️
-	2020  <a href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
+	2022  <a href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
 </footer>
 
 

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Dylan Servilla - ScummVM Blog</title>
+    <title>Deborah Servilla - ScummVM Blog</title>
     <link>https://djsrv.github.io/scummvm/</link>
-    <description>Recent content in ScummVM Blog on Dylan Servilla</description>
+    <description>Recent content in ScummVM Blog on Deborah Servilla</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <managingEditor>dservilla@gmail.com (Dylan Servilla)</managingEditor>
-    <webMaster>dservilla@gmail.com (Dylan Servilla)</webMaster>
+    <managingEditor>dservilla@gmail.com (Deborah Servilla)</managingEditor>
+    <webMaster>dservilla@gmail.com (Deborah Servilla)</webMaster>
     <lastBuildDate>Tue, 12 May 2020 01:04:56 -0400</lastBuildDate>
     
 	<atom:link href="https://djsrv.github.io/scummvm/index.xml" rel="self" type="application/rss+xml" />
@@ -17,7 +17,7 @@
       <title>Google Summer of Code Summary</title>
       <link>https://djsrv.github.io/scummvm/gsoc-summary/</link>
       <pubDate>Sun, 30 Aug 2020 15:37:02 -0400</pubDate>
-      <author>dservilla@gmail.com (Dylan Servilla)</author>
+      <author>dservilla@gmail.com (Deborah Servilla)</author>
       <guid>https://djsrv.github.io/scummvm/gsoc-summary/</guid>
       <description>&lt;p&gt;Over the past few months I&amp;rsquo;ve made 451 commits to the main ScummVM repository, largely in the Macromedia Director and MacGUI subsystems:&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://djsrv.github.io/img/scummvm-commits.png&#34; alt=&#34;451 commits to ScummVM&#34;&gt;&lt;/p&gt;
@@ -52,7 +52,7 @@
 &lt;li&gt;I implemented &lt;a href=&#34;https://djsrv.github.io/scummvm/miaws/&#34;&gt;Movies In A Window&lt;/a&gt; (MIAWs), adding support for multiple concurrent movies.&lt;/li&gt;
 &lt;li&gt;I recreated the looks of the &lt;a href=&#34;https://djsrv.github.io/scummvm/a-branded-desktop/&#34;&gt;Mac System 7 desktop&lt;/a&gt; to go with MIAWs.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;With the work I&amp;rsquo;ve done this summer, in combination with the other team members&amp;rsquo; efforts, the Director engine is much more robust and has a greatly enhanced feature set. It can run a decent subset of Director 2-4 movies, but there is still plenty of work to be done to ensure feature completeness and to support later versions. I plan to stick around to help with this.&lt;/p&gt;
+&lt;p&gt;With the work I&amp;rsquo;ve done this summer, in combination with the other team members&#39; efforts, the Director engine is much more robust and has a greatly enhanced feature set. It can run a decent subset of Director 2-4 movies, but there is still plenty of work to be done to ensure feature completeness and to support later versions. I plan to stick around to help with this.&lt;/p&gt;
 &lt;p&gt;In addition, while my hope of full support of a real Director game has not yet been realized, I&amp;rsquo;ve helped to lay the foundations for that. With the foundational elements of Director and Lingo in place, if a bit more love is given to some individual games, full support should be easily attainable.&lt;/p&gt;
 </description>
     </item>
@@ -61,15 +61,15 @@
       <title>Wrapping up the Summer</title>
       <link>https://djsrv.github.io/scummvm/wrapping-up-summer/</link>
       <pubDate>Mon, 24 Aug 2020 23:13:10 -0400</pubDate>
-      <author>dservilla@gmail.com (Dylan Servilla)</author>
+      <author>dservilla@gmail.com (Deborah Servilla)</author>
       <guid>https://djsrv.github.io/scummvm/wrapping-up-summer/</guid>
       <description>&lt;p&gt;Summer&amp;rsquo;s drawing to a close, and the school year is about to begin. Before that happens, I&amp;rsquo;m trying to squeeze in a few more tasks: exposing more Director features as Lingo objects, fully implementing chunk expressions, and cleaning up the implementations of Director 4 Lingo instructions.&lt;/p&gt;
 &lt;p&gt;One of the ways I&amp;rsquo;ve tried to make the D4 instructions cleaner is by reducing code duplication. First, I cut down the size of &lt;code&gt;cb_objectcall&lt;/code&gt; by reusing functionality in the generic &lt;code&gt;call&lt;/code&gt;. Then, I noticed that several variable-related instructions take a variable type argument, but none of the instructions handled every variable type correctly. After identifying the IDs for every type I could, I combined all this duplicated variable lookup code into a single helper function.&lt;/p&gt;
 &lt;p&gt;I also implemented Lingo errors, allowing for easier detection of illegal cases, which often indicate a mistake on our part.&lt;/p&gt;
 &lt;p&gt;Then, I began implementing better support of chunk expressions. Chunk expressions are references to substrings, such as &lt;code&gt;word 2 to 4 of &amp;quot;the quick brown fox&amp;quot;&lt;/code&gt;. You can use them to grab text:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;set x to word 2 to 4 of &amp;quot;the quick brown fox&amp;quot;`
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;set x to word 2 to 4 of &amp;quot;the quick brown fox&amp;quot;`
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;or you can use them manipulate the text:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;put &amp;quot; foo&amp;quot; after word 2 of x
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;put &amp;quot; foo&amp;quot; after word 2 of x
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Previously, we only supported the former, and I&amp;rsquo;m in the process of implementing support for the latter.&lt;/p&gt;
 &lt;p&gt;Since summer&amp;rsquo;s almost over, I&amp;rsquo;d like to thank the ScummVM developers, especially sev, rvanlaar, and moralrecordings, as well as Google for its Summer of Code program. I&amp;rsquo;ve learned a lot and had a good deal of fun over the past three months.&lt;/p&gt;
 &lt;p&gt;I won&amp;rsquo;t be working on ScummVM full-time anymore, but this definitely won&amp;rsquo;t be the last you hear from me. We still have plenty of work to do on Director, and I plan to keep contributing in my spare time.&lt;/p&gt;
@@ -81,7 +81,7 @@
       <title>Shockwave!</title>
       <link>https://djsrv.github.io/scummvm/shockwave/</link>
       <pubDate>Mon, 17 Aug 2020 23:41:15 -0400</pubDate>
-      <author>dservilla@gmail.com (Dylan Servilla)</author>
+      <author>dservilla@gmail.com (Deborah Servilla)</author>
       <guid>https://djsrv.github.io/scummvm/shockwave/</guid>
       <description>&lt;p&gt;Last week was an exciting one because the Director engine can finally load Macromedia Shockwave 1.0 movies!&lt;/p&gt;
 &lt;p&gt;This first version of Shockwave was based on Director 4.0, which we already have partial support for, and it used a &amp;ldquo;afterburned&amp;rdquo; movie format with a modified memory map and zlib compression. After implementing support for this file format, the Director engine can now load (and sort of play) early Shockwave games:
@@ -96,7 +96,7 @@
       <title>Fixup</title>
       <link>https://djsrv.github.io/scummvm/fixup/</link>
       <pubDate>Mon, 10 Aug 2020 21:06:46 -0400</pubDate>
-      <author>dservilla@gmail.com (Dylan Servilla)</author>
+      <author>dservilla@gmail.com (Deborah Servilla)</author>
       <guid>https://djsrv.github.io/scummvm/fixup/</guid>
       <description>&lt;p&gt;This last week I largely worked my way through my backed up Trello cards, as well as fixing Buildbot failures and various issues with movies in windows.&lt;/p&gt;
 &lt;p&gt;Some highlights from bug hunting:&lt;/p&gt;
@@ -115,7 +115,7 @@
       <title>A Branded Desktop</title>
       <link>https://djsrv.github.io/scummvm/a-branded-desktop/</link>
       <pubDate>Mon, 03 Aug 2020 18:39:50 -0400</pubDate>
-      <author>dservilla@gmail.com (Dylan Servilla)</author>
+      <author>dservilla@gmail.com (Deborah Servilla)</author>
       <guid>https://djsrv.github.io/scummvm/a-branded-desktop/</guid>
       <description>&lt;p&gt;It&amp;rsquo;s been a hectic week since I attended two online conferences going on at the same time, and I had to prepare a talk for one of them, but I still have some exciting progress to share!&lt;/p&gt;
 &lt;p&gt;This week I got desktop/window border textures working, so the environment surrounding the Director movies looks closer to how it would have back in the day. Though the ScummVM branding would&amp;rsquo;ve been Mac OS branding, of course.
@@ -130,7 +130,7 @@
       <title>Events and Things</title>
       <link>https://djsrv.github.io/scummvm/events-and-things/</link>
       <pubDate>Mon, 27 Jul 2020 17:47:23 -0400</pubDate>
-      <author>dservilla@gmail.com (Dylan Servilla)</author>
+      <author>dservilla@gmail.com (Deborah Servilla)</author>
       <guid>https://djsrv.github.io/scummvm/events-and-things/</guid>
       <description>&lt;p&gt;I spent last week fixing more Lingo issues, mostly event related:&lt;/p&gt;
 &lt;ul&gt;
@@ -150,7 +150,7 @@
       <title>Learning the Lingo</title>
       <link>https://djsrv.github.io/scummvm/learning-the-lingo/</link>
       <pubDate>Mon, 20 Jul 2020 23:34:57 -0400</pubDate>
-      <author>dservilla@gmail.com (Dylan Servilla)</author>
+      <author>dservilla@gmail.com (Deborah Servilla)</author>
       <guid>https://djsrv.github.io/scummvm/learning-the-lingo/</guid>
       <description>&lt;p&gt;This week I worked out some longstanding Lingo issues!&lt;/p&gt;
 &lt;h2 id=&#34;duplicate-scripts&#34;&gt;Duplicate Scripts&lt;/h2&gt;
@@ -159,7 +159,7 @@
 &lt;p&gt;Initially, I thought that there must be something that indicated certain scripts, or at least certain handlers within these scripts, were unused. The first place I investigated was the script&amp;rsquo;s &amp;ldquo;handler vectors.&amp;rdquo; These differed between some of the duplicate scripts, and I thought they might hold the key to how the script conflicts should be handled.&lt;/p&gt;
 &lt;p&gt;&amp;ldquo;Handler vectors&amp;rdquo; were identified as an array of 16-bit integers in &lt;a href=&#34;https://docs.google.com/document/d/1jDBXE4Wv1AEga-o1Wi8xtlNZY4K2fHxW2Xs8RgARrqk/edit&#34;&gt;Anthony Kleine&amp;rsquo;s Director documentation&lt;/a&gt;, but there was no explanation of their purpose. I got in touch with Anthony, but he couldn&amp;rsquo;t remember what they were for, and they remained a mystery to me for weeks. Once I began deeper investigation, it quickly became apparent that the &amp;ldquo;handler vectors&amp;rdquo; are just used to map event IDs to handler IDs. Totally unrelated.&lt;/p&gt;
 &lt;p&gt;The next suspect was the Lingo context, a container which maps script IDs to script data:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;Section LctX {
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Section LctX {
 	Struct header {
 		...
 		Uint16 [big] freePtr
@@ -199,9 +199,9 @@
 &lt;/ul&gt;
 &lt;p&gt;Now, these are separate things, but they should only be treated separately during execution. Previously we were differentiating them in the grammar, which again complicated things.&lt;/p&gt;
 &lt;p&gt;With that done, I began general cleanup. Reorganizing things where conflicts could be eliminated, reducing the use of right recursion, and adding support for fun statements like this one:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;put cast cast
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;put cast cast
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;What should this do? Why, of course, it prints the cast member whose ID is equal to the variable &lt;code&gt;cast&lt;/code&gt;:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;set cast = 1
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;set cast = 1
 put cast cast
 -- (cast 1)
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;All in all, the grammar is now truer to the original, and we&amp;rsquo;re down to 6 conflicts from 441!&lt;/p&gt;
@@ -212,7 +212,7 @@ put cast cast
       <title>MIAWs</title>
       <link>https://djsrv.github.io/scummvm/miaws/</link>
       <pubDate>Mon, 13 Jul 2020 15:26:00 -0400</pubDate>
-      <author>dservilla@gmail.com (Dylan Servilla)</author>
+      <author>dservilla@gmail.com (Deborah Servilla)</author>
       <guid>https://djsrv.github.io/scummvm/miaws/</guid>
       <description>&lt;p&gt;This last week I finished up my refactoring spree, adding an object interface which allows any type to be treated as a Lingo object. With this done, it allowed for our Stage to be turned into a Lingo object, enabling&amp;hellip;&lt;/p&gt;
 &lt;p&gt;Movies In A Window!&lt;/p&gt;
@@ -229,7 +229,7 @@ put cast cast
       <title>Refactoring</title>
       <link>https://djsrv.github.io/scummvm/refactoring/</link>
       <pubDate>Mon, 06 Jul 2020 20:50:26 -0400</pubDate>
-      <author>dservilla@gmail.com (Dylan Servilla)</author>
+      <author>dservilla@gmail.com (Deborah Servilla)</author>
       <guid>https://djsrv.github.io/scummvm/refactoring/</guid>
       <description>&lt;p&gt;This last week I got some boring but important work done. After completing some odd jobs like implementing event delegation for Director 2-3 and TrueType font loading, I began refactoring the Director engine to make it flexible enough to handle Movies In A Window (MIAWs), or multiple movies running in parallel.&lt;/p&gt;
 &lt;p&gt;For those not familiar, Director uses a movie metaphor for development. A movie&amp;rsquo;s major components are:&lt;/p&gt;
@@ -249,13 +249,13 @@ put cast cast
       <title>Back to Bytecode</title>
       <link>https://djsrv.github.io/scummvm/back-to-bytecode/</link>
       <pubDate>Sun, 28 Jun 2020 22:11:51 -0400</pubDate>
-      <author>dservilla@gmail.com (Dylan Servilla)</author>
+      <author>dservilla@gmail.com (Deborah Servilla)</author>
       <guid>https://djsrv.github.io/scummvm/back-to-bytecode/</guid>
       <description>&lt;p&gt;This week I wrapped up work on parent scripts and factories, starting with some bug fixes and minor refactoring. The Lingo in &lt;em&gt;Lingo Workshop&lt;/em&gt;&amp;rsquo;s Bug Garden movie now fully works!&lt;/p&gt;
 
 &lt;iframe src=&#34;https://www.youtube.com/embed/QDM4wUz2Oo4&#34; style=&#34;width: 560px; height: 315px; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
 
-&lt;p&gt;After getting Bug Garden working, I began implementation of the bytecode versions of parent scripts and factories. For those not familiar with the Director engine, there are two ways we load Lingo scripts. From Director 2-3, Lingo was stored in Director movies as source code, which we parse and compile to custom bytecode. Starting in Director 4, Lingo was compiled to a &lt;a href=&#34;http://fileformats.archiveteam.org/wiki/Lingo_bytecode&#34;&gt;bytecode&lt;/a&gt; which is similar to our own, but it has a good number of differences. This bytecode is stored within movies&amp;rsquo; &lt;code&gt;Lscr&lt;/code&gt; chunks, which also contain script metadata, much of which we don&amp;rsquo;t yet handle. Due to the bytecode differences and unhandled metadata, parent scripts and factories only worked when the Lingo was loaded from source code, not from &lt;code&gt;Lscr&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;After getting Bug Garden working, I began implementation of the bytecode versions of parent scripts and factories. For those not familiar with the Director engine, there are two ways we load Lingo scripts. From Director 2-3, Lingo was stored in Director movies as source code, which we parse and compile to custom bytecode. Starting in Director 4, Lingo was compiled to a &lt;a href=&#34;http://fileformats.archiveteam.org/wiki/Lingo_bytecode&#34;&gt;bytecode&lt;/a&gt; which is similar to our own, but it has a good number of differences. This bytecode is stored within movies&#39; &lt;code&gt;Lscr&lt;/code&gt; chunks, which also contain script metadata, much of which we don&amp;rsquo;t yet handle. Due to the bytecode differences and unhandled metadata, parent scripts and factories only worked when the Lingo was loaded from source code, not from &lt;code&gt;Lscr&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;For this, I needed to get back to my Director roots, which started with reverse-engineering &lt;code&gt;Lscr&lt;/code&gt; for the development of &lt;a href=&#34;https://github.com/Earthquake-Project/ProjectorRays&#34;&gt;ProjectorRays&lt;/a&gt;, a Lingo bytecode decompiler. I already knew how to handle parent scripts from ProjectorRays, but factories were a mystery, so I needed to go back to the old strategy of incrementally changing test movies and watching what data changes. I&amp;rsquo;ll spare you the fine details of how factories are stored, but basically scripts which contain factories are split into multiple &lt;code&gt;Lscr&lt;/code&gt; chunks, with one chunk for each factory, and there&amp;rsquo;s some metadata which ties these chunks together. With that work done, parent scripts and factories can now be loaded from bytecode.&lt;/p&gt;
 &lt;p&gt;I also did some more work with events, which I will continue this coming week. Last week I said that only one object is supposed to handle each event, which is only partially true. Sev pointed out that an event handler can call &lt;code&gt;pass&lt;/code&gt;, which will pass the event to the next object in the chain of potential handlers, so I needed to make further changes to event delegation to handle that. Now I&amp;rsquo;m in the process of checking event execution order against different versions of Director, and then it&amp;rsquo;s on to implementing windows.&lt;/p&gt;
 </description>
@@ -265,7 +265,7 @@ put cast cast
       <title>Sounds, Events, and Bugs</title>
       <link>https://djsrv.github.io/scummvm/sounds-events-bugs/</link>
       <pubDate>Sun, 21 Jun 2020 23:23:04 -0400</pubDate>
-      <author>dservilla@gmail.com (Dylan Servilla)</author>
+      <author>dservilla@gmail.com (Deborah Servilla)</author>
       <guid>https://djsrv.github.io/scummvm/sounds-events-bugs/</guid>
       <description>&lt;p&gt;This last week was a busy one, with my focus split between three main tasks.&lt;/p&gt;
 &lt;p&gt;The first two days, I played through the beginning of &lt;em&gt;Spaceship Warlock&lt;/em&gt;, identifying and fixing any Lingo issues. I quickly got frustrated with not being able to hear the game&amp;rsquo;s dialogue, so I improved our decoder for Macintosh &lt;code&gt;snd &lt;/code&gt; resources so that it could handle &lt;em&gt;Warlock&lt;/em&gt;&amp;rsquo;s sounds:&lt;/p&gt;
@@ -283,10 +283,10 @@ put cast cast
       <title>FileIO Fun</title>
       <link>https://djsrv.github.io/scummvm/fileio-fun/</link>
       <pubDate>Sun, 14 Jun 2020 18:58:51 -0400</pubDate>
-      <author>dservilla@gmail.com (Dylan Servilla)</author>
+      <author>dservilla@gmail.com (Deborah Servilla)</author>
       <guid>https://djsrv.github.io/scummvm/fileio-fun/</guid>
       <description>&lt;p&gt;This week my focus was on our first XObject, FileIO, which allows Lingo to read/write files:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;set file = FileIO(mNew, &amp;quot;write&amp;quot;, &amp;quot;foo.txt&amp;quot;)
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;set file = FileIO(mNew, &amp;quot;write&amp;quot;, &amp;quot;foo.txt&amp;quot;)
 file(mWriteString, &amp;quot;Hello, world!&amp;quot; &amp;amp; RETURN)
 file(mDispose)
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Relatively simple, so FileIO itself didn&amp;rsquo;t take long to implement. After that was done, I spent most of the week hunting down and fixing bugs and missing Lingo features in two major FileIO examples, &lt;em&gt;The Apartment&lt;/em&gt;&amp;rsquo;s Saving Text and &lt;em&gt;Spaceship Warlock&lt;/em&gt;.&lt;/p&gt;
@@ -306,7 +306,7 @@ file(mDispose)
       <title>Charlie and the Object Factory</title>
       <link>https://djsrv.github.io/scummvm/charlie-and-the-object-factory/</link>
       <pubDate>Sun, 07 Jun 2020 15:05:26 -0400</pubDate>
-      <author>dservilla@gmail.com (Dylan Servilla)</author>
+      <author>dservilla@gmail.com (Deborah Servilla)</author>
       <guid>https://djsrv.github.io/scummvm/charlie-and-the-object-factory/</guid>
       <description>&lt;p&gt;&amp;ldquo;An important room, this!&amp;rdquo; cried Mr. Wonka, taking a bunch of keys from his pocket and slipping one into the keyhole of the door. &amp;ldquo;&lt;em&gt;This&lt;/em&gt; is the nerve center of the whole factory, the heart of the whole business! And so &lt;em&gt;beautiful&lt;/em&gt;! I &lt;em&gt;insist&lt;/em&gt; upon my rooms being beautiful! I can&amp;rsquo;t &lt;em&gt;abide&lt;/em&gt; ugliness in factories! &lt;em&gt;In&lt;/em&gt; we go, then! But &lt;em&gt;do&lt;/em&gt; be careful, my dear children! Don&amp;rsquo;t lose your heads! Don&amp;rsquo;t get overexcited! Keep very calm!&amp;rdquo;&lt;/p&gt;
 &lt;p&gt;Mr. Wonka opened the door. Five children and nine grownups pushed their ways in—and, &lt;em&gt;oh&lt;/em&gt;, what an amazing sight it was that now met their eyes!&lt;/p&gt;
@@ -315,7 +315,7 @@ file(mDispose)
 
 &lt;p&gt;That&amp;rsquo;s right, the Director 2 Simple Factory example now runs in ScummVM (with some modifications to account for broken button rendering)! I had to implement several Lingo features for this movie, but the most important is, of course, factories, which are essentially Lingo&amp;rsquo;s first iteration of object-oriented programming.&lt;/p&gt;
 &lt;p&gt;For example, here&amp;rsquo;s a snippet from the &lt;code&gt;ballBoy&lt;/code&gt; factory used in this movie:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;factory ballBoy
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;factory ballBoy
 
 method mNew n, entry
     instance ballNum,  spriteNum, count, entryNum
@@ -337,7 +337,7 @@ method mNew n, entry
       <title>First Day of Coding</title>
       <link>https://djsrv.github.io/scummvm/first-day-of-coding/</link>
       <pubDate>Mon, 01 Jun 2020 23:59:24 -0400</pubDate>
-      <author>dservilla@gmail.com (Dylan Servilla)</author>
+      <author>dservilla@gmail.com (Deborah Servilla)</author>
       <guid>https://djsrv.github.io/scummvm/first-day-of-coding/</guid>
       <description>&lt;p&gt;The first official day of coding has just ended!&lt;/p&gt;
 &lt;p&gt;I spent the last 9 days before this one driving from New Jersey to Arizona and back, so no progress to report on except this first official day, which I spent implementing Lingo factories and ironing out kinks in my workstation. Now Lingo supports creating factories and calling methods on them, and tomorrow I&amp;rsquo;ll be implementing default methods, instance variables, parent scripts, and whatever else pops up.&lt;/p&gt;
@@ -349,7 +349,7 @@ method mNew n, entry
       <title>A Week of Preparation</title>
       <link>https://djsrv.github.io/scummvm/a-week-of-preparation/</link>
       <pubDate>Wed, 20 May 2020 18:12:16 -0400</pubDate>
-      <author>dservilla@gmail.com (Dylan Servilla)</author>
+      <author>dservilla@gmail.com (Deborah Servilla)</author>
       <guid>https://djsrv.github.io/scummvm/a-week-of-preparation/</guid>
       <description>&lt;p&gt;School&amp;rsquo;s out, Summer of Code prep has begun! This past week:&lt;/p&gt;
 &lt;ul&gt;
@@ -372,9 +372,9 @@ method mNew n, entry
       <title>Hello, ScummVM!</title>
       <link>https://djsrv.github.io/scummvm/hello-scummvm/</link>
       <pubDate>Tue, 12 May 2020 00:12:43 -0400</pubDate>
-      <author>dservilla@gmail.com (Dylan Servilla)</author>
+      <author>dservilla@gmail.com (Deborah Servilla)</author>
       <guid>https://djsrv.github.io/scummvm/hello-scummvm/</guid>
-      <description>&lt;p&gt;Hi! I&amp;rsquo;m Dylan Servilla, and this summer I&amp;rsquo;m going to be working on ScummVM&amp;rsquo;s Macromedia Director engine as a GSoC student. Director was used to create a ton of multimedia from the late &amp;rsquo;80s to early &amp;rsquo;00s, and I think it&amp;rsquo;s important that we save this digital history from software rot. In particular, I hope to help the engine reach full support for Spaceship Warlock and The Journeyman Project in the near future. :)&lt;/p&gt;
+      <description>&lt;p&gt;Hi! I&amp;rsquo;m Deborah Servilla, and this summer I&amp;rsquo;m going to be working on ScummVM&amp;rsquo;s Macromedia Director engine as a GSoC student. Director was used to create a ton of multimedia from the late &amp;rsquo;80s to early &amp;rsquo;00s, and I think it&amp;rsquo;s important that we save this digital history from software rot. In particular, I hope to help the engine reach full support for Spaceship Warlock and The Journeyman Project in the near future. :)&lt;/p&gt;
 &lt;p&gt;A good portion of my work will be reimplementing Lingo, Director&amp;rsquo;s scripting language. I made some &lt;a href=&#34;https://github.com/Brian151/OpenShockwave/tree/master/tools/lscrtoscript&#34;&gt;Lingo&lt;/a&gt; &lt;a href=&#34;https://github.com/Earthquake-Project/ProjectorRays&#34;&gt;decompilation&lt;/a&gt; &lt;a href=&#34;https://github.com/Earthquake-Project/earthquake-rust&#34;&gt;tools&lt;/a&gt; a few years back, and I&amp;rsquo;m very excited to continue exploring the intricacies of this language under the guidance of ScummVM&amp;rsquo;s fantastic mentors.&lt;/p&gt;
 &lt;p&gt;I&amp;rsquo;ll see you soon with more updates!&lt;/p&gt;
 </description>
